@@ -1,0 +1,45 @@
+page-home {
+
+}
+.intro{
+  background: #fd1625;
+  background: -moz-linear-gradient(top,  #fd1625 0%, #fe4221 100%);
+  background: -webkit-linear-gradient(top,  #fd1625 0%,#fe4221 100%);
+  background: linear-gradient(to bottom,  #fd1625 0%,#fe4221 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd1625', endColorstr='#fe4221',GradientType=0 );
+
+}
+.header{
+  margin-top:20px;
+  width:75%;
+  height: auto;
+}
+
+.header h1{
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align:justify;;
+  text-transform: uppercase;
+  line-height: 158%;
+}
+.action{
+  margin-top: 120px;
+}
+
+.action button{
+  border-color: #fff !important;
+  color:#fff !important;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.skip-btn{
+  position: relative;
+  top:160px;
+}
+
+.skip-btn button{
+  background-color: #fff !important;
+  color:#FE3F21;
+}
