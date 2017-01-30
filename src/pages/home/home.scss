@@ -2,21 +2,23 @@ page-home {
 
 }
 .intro{
-  background: #fd1625;
+  /*background: #fd1625;
   background: -moz-linear-gradient(top,  #fd1625 0%, #fe4221 100%);
   background: -webkit-linear-gradient(top,  #fd1625 0%,#fe4221 100%);
   background: linear-gradient(to bottom,  #fd1625 0%,#fe4221 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd1625', endColorstr='#fe4221',GradientType=0 );
-
+  *****************************************/
+  @include bgcolor;
 }
-.header{
+
+.nav-header{
   margin-top:20px;
   width:75%;
   height: auto;
 }
 
-.header h1{
-  font-size: 16px;
+.nav-header h1{
+  font-size: 14px;
   color: #fff;
   letter-spacing: 1px;
   text-align:justify;;

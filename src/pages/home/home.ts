@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { RegistrationPage } from '../registration/registration';
+import { MainPage } from '../main/main';
 
 @Component({
   selector: 'page-home',
@@ -17,5 +18,8 @@ export class HomePage {
   }
   registrate(){
     this.navCtrl.push(RegistrationPage);
+  }
+  skip(){
+    this.navCtrl.push(MainPage);
   }
 }
