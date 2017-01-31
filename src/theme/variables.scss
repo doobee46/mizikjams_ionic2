@@ -40,6 +40,22 @@ $colors: (
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd1721', endColorstr='#2e294e',GradientType=0 );
 }
 
+@mixin mask {
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%);
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#d9000000',GradientType=0 );
+  display:block;
+  width:100%;
+  z-index:1000;
+}
+
+
+
+
+
+
+
 
 // App iOS Variables
 // --------------------------------------------------
