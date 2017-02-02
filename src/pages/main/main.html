@@ -14,55 +14,52 @@
    </ion-buttons>
   </ion-toolbar>
 </ion-header>  
-  <ion-content class=" mainpage card-background-page ">
-      <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
-        <ion-card>
-          <div class="videolist">
-            <img src="assets/img/dat7.jpg"/>
-            <div class="card-title">Se ou mwen renmen</div>
-            <div class="card-subtitle">72 Listings</div>
-            <div class="widgets">
-              <ion-grid>
-                <ion-row>
-                  <ion-col width-60 class="col1">
-                    <ul>
-                      <li>
-                        <button ion-button icon-only outline clear >
-                          <ion-icon name="heart"></ion-icon>
-                        </button>
-                        </li>
-                      <li>
-                        <button ion-button icon-only outline clear>
-                          <ion-icon name="add"></ion-icon>
-                        </button>
-                     </li>
-                    </ul>
-                  </ion-col>
-                  <ion-col width-40 class="col2">
-                    <button ion-button icon-only outline clear>
-                      <ion-icon name="eye">200 views</ion-icon>
-                    </button>
-                    </ion-col>
-                </ion-row>
-              </ion-grid>
-            </div>
-          </div>
-        </ion-card>      
-        <ion-card>
-          <img src="assets/img/klass.jpg"/>
-          <div class="card-title">Se ou mwen renmen</div>
-          <div class="card-subtitle">72 Listings</div>
-        </ion-card>
-        <ion-card>
-          <img src="assets/img/nulook.jpg"/>
-          <div class="card-title">Se ou mwen renmen</div>
-          <div class="card-subtitle">72 Listings</div>
-        </ion-card>
-        <ion-card>
-          <img src="assets/img/phylicia.jpg"/>
-          <div class="card-title">Se ou mwen renmen</div>
-          <div class="card-subtitle">72 Listings</div>
-        </ion-card>
+<ion-content class=" mainpage card-background-page ">
+ <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>                   
+  <div class="videolist">
+    <ion-list>
+    <div class="videoitem" >
+       <div class="video-wrapper">       
+         <img src="assets/img/dat7.jpg"/>
+         <div class="widgets">
+         <div class="play">
+           <img src="assets/img/play.png"/>
+         </div>
+         <p>video title</p>
+         <h3>video band</h3>
+        <ion-grid>
+          <ion-row>
+            <ion-col width-60 class="col1">
+              <ul>
+                <li>
+                  <button ion-button color="light" clear outline icon-only>
+                    <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                  </button>
+                </li>
+                <li>
+                  <button ion-button color="light" clear outline icon-only>
+                    <ion-icon ios="ios-add" md="md-add"></ion-icon>
+                  </button>
+                </li>
+              </ul> 
+            </ion-col>
+            <ion-col width-40 class="col2">
+              <ul>
+                <li>
+                  <button ion-button color="light" clear icon-only class="viewcouunt">
+                    <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+                    200 views             
+                  </button>
+                </li>
+               </ul>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+         </div>
+       </div>
+    </div>
+    </ion-list>
+  </div>  
 </ion-content>
