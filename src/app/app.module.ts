@@ -7,6 +7,8 @@ import { RegistrationPage } from '../pages/registration/registration';
 import { MainPage } from '../pages/main/main';
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { Storage } from '@ionic/storage';
+import { IntroPage } from '../pages/intro/intro';
  
 const cloudSettings: CloudSettings = {
   'core': {
@@ -20,7 +22,8 @@ const cloudSettings: CloudSettings = {
     HomePage,
     LoginPage,
     RegistrationPage,
-    MainPage
+    MainPage,
+    IntroPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -32,8 +35,9 @@ const cloudSettings: CloudSettings = {
     HomePage,
     LoginPage,
     RegistrationPage,
-    MainPage
+    MainPage,
+    IntroPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage]
 })
 export class AppModule {}
