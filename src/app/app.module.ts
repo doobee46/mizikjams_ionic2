@@ -5,10 +5,14 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegistrationPage } from '../pages/registration/registration';
 import { MainPage } from '../pages/main/main';
-
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
 import { IntroPage } from '../pages/intro/intro';
+import { ProfilePage } from '../pages/profile/profile';
+import { PlaylistPage } from '../pages/playlist/playlist';
+import { AuthService } from '../providers/auth-service';
+import { SearchPage } from  '../pages/search/search';
+
  
 const cloudSettings: CloudSettings = {
   'core': {
@@ -23,7 +27,10 @@ const cloudSettings: CloudSettings = {
     LoginPage,
     RegistrationPage,
     MainPage,
-    IntroPage
+    IntroPage,
+    ProfilePage,
+    PlaylistPage,
+    SearchPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -36,8 +43,11 @@ const cloudSettings: CloudSettings = {
     LoginPage,
     RegistrationPage,
     MainPage,
-    IntroPage
+    IntroPage,
+    ProfilePage,
+    PlaylistPage,
+    SearchPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage,AuthService]
 })
 export class AppModule {}

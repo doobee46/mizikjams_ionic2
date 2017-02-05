@@ -1,1 +1,46 @@
-<ion-nav [root]="rootPage"></ion-nav>
+// in same directory as app.component.ts -->
+ 
+<!-- this menu section should hold what content and destine to where
+// at what point in time?
+// That is determined by the last line in this -->
+<ion-menu [content]="content">
+ 
+<!-- The side menu title -->
+<ion-header>
+  <ion-toolbar color="orange">
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+  <ion-content>
+    <div class="mini-profile" >
+        <div class="avatar">
+          <ion-thumbnail item-left>
+            <img src="assets/img/avatar.png">
+          </ion-thumbnail>
+        </div>
+        <div class="avatar-info">
+          <h3> John Doe </h3>
+          <p> John.doe@example.com </p>
+        </div>
+    </div>
+    <ion-list>
+      <button ion-item (click)="openMain()">
+        Home
+      </button>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+      <div  class="logout">   
+        <button color="orange"  ion-button outline small (click)="navHome()">
+          Logout
+        </button>
+      </div>
+
+    </ion-list>
+  </ion-content>
+ 
+</ion-menu>
+<!-- What's my root? remember the this.rootPage?-->
+<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>
+
+

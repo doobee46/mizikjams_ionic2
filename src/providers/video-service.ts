@@ -10,12 +10,27 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class VideoService {
-  public videos: any;
+ videos: any;
 
   constructor(public http: Http) {
-    
+    console.log('Hello videoService Provider');
   }
 
+  load() {
+    if (this.videos) {
+      return Promise.resolve(this.videos);
+    }
+    // Dont have the data yet
+    return new Promise(resolve => {
+      this.http.get('https://randomuser.me/api/?results=10')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.videos = data.videos;
+          resolve(this.videos);
+        });
+    });
+  }  
  
 
 }
+

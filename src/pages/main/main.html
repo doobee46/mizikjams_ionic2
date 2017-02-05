@@ -8,27 +8,25 @@
    </ion-buttons>-->
    <ion-title>Library</ion-title>
    <ion-buttons end>
-     <button ion-button icon-only color="royal">
+     <button ion-button  menuToggle icon-only icon-only color="royal">
        <ion-icon name="menu"></ion-icon>
      </button>
    </ion-buttons>
   </ion-toolbar>
 </ion-header>  
-<ion-content class=" mainpage card-background-page ">
- <ion-refresher (ionRefresh)="doRefresh($event)">
-  <ion-refresher-content></ion-refresher-content>
-</ion-refresher>                   
-  <div class="videolist">
-    <ion-list>
-    <div class="videoitem" >
-       <div class="video-wrapper">       
-         <img src="assets/img/dat7.jpg"/>
+<ion-content class=" mainpage card-background-page ">                   
+  <ion-list class="videolist" >
+    <ion-item class="videoitem" >
+       <div class="video-wrapper">
+         <div class="masking">       
+         <img src="assets/img/dat7.png"/>
+         </div>
          <div class="widgets">
-         <div class="play">
+         <!--<div class="play">
            <img src="assets/img/play.png"/>
          </div>
          <p>video title</p>
-         <h3>video band</h3>
+         <!--<h3>{{video.band}}</h3>-->
         <ion-grid>
           <ion-row>
             <ion-col width-60 class="col1">
@@ -46,7 +44,7 @@
               </ul> 
             </ion-col>
             <ion-col width-40 class="col2">
-              <ul>
+              <ul class="view">
                 <li>
                   <button ion-button color="light" clear icon-only class="viewcount">
                     <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
@@ -59,7 +57,11 @@
         </ion-grid>
          </div>
        </div>
-    </div>
-    </ion-list>
-  </div>  
+    </ion-item>
+  </ion-list>
+  <div class="floatingbtn">
+    <ion-fab bottom right edge >
+      <button ion-fab color="orange" (click)="search();"><ion-icon name="search"></ion-icon></button>
+    </ion-fab> 
+ </div>
 </ion-content>
