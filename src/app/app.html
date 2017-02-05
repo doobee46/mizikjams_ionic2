@@ -30,10 +30,15 @@
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
+      <button ion-item  >
+        create playlist
+        <ion-icon ios="ios-add" md="md-add" item-right (click)="doPrompt()"></ion-icon>
+      </button>
       <div  class="logout">   
         <button color="orange"  ion-button outline small (click)="navHome()">
           Logout
         </button>
+
       </div>
 
     </ion-list>
