@@ -1,6 +1,4 @@
-page-login {
 
-}
 .login{
     @include bgcolor;
 }
@@ -52,27 +50,16 @@ page-login {
 .actions{
   position: relative;
   top:-10px;
+    .col1 button.left{
+      @include text-actions;
+      float:left;     
+    }
+    .col2 button.right{
+      @include text-actions;
+      float:right;
+    }
 }
 
 
-.col1 h3{
-  font-size: 13px;
-  color:#fff;
-  letter-spacing:1px;
-  position:relative;
-  top:-5px;
-  left:-10px;
-  float:left;
-  text-transform: uppercase;
-}
 
-.col2 h3{
-  font-size: 13px;
-  color:#fff;
-  letter-spacing:1px;
-  position:relative;
-  top:-5px;
-  right:-10px;
-  float:right;
-  text-transform: uppercase;
-}
+

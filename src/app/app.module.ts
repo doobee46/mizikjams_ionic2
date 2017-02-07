@@ -12,6 +12,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { PlaylistPage } from '../pages/playlist/playlist';
 import { AuthService } from '../providers/auth-service';
 import { SearchPage } from  '../pages/search/search';
+import { ResetpasswordPage } from '../pages/resetpassword/resetpassword';
+
 
  
 const cloudSettings: CloudSettings = {
@@ -19,6 +21,17 @@ const cloudSettings: CloudSettings = {
     'app_id': '4d86ccd8'
   }
 };
+
+import * as firebase from 'firebase';
+
+    export const firebaseConfig = {
+      apiKey: "AIzaSyCf4h-LHMweQH7sJPgUgSpwhBphjMk-WHI",
+      authDomain: "mizikjams.firebaseapp.com",
+      databaseURL: "https://mizikjams.firebaseio.com",
+      storageBucket: "mizikjams.appspot.com",
+      messagingSenderId: "243758758487"
+    };
+    firebase.initializeApp(firebaseConfig); 
 
 @NgModule({
   declarations: [
@@ -30,7 +43,8 @@ const cloudSettings: CloudSettings = {
     IntroPage,
     ProfilePage,
     PlaylistPage,
-    SearchPage
+    SearchPage,
+    ResetpasswordPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -46,7 +60,8 @@ const cloudSettings: CloudSettings = {
     IntroPage,
     ProfilePage,
     PlaylistPage,
-    SearchPage
+    SearchPage,
+    ResetpasswordPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage,AuthService]
 })

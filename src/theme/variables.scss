@@ -52,6 +52,15 @@ $colors: (
   color:#fff;
 }
 
+@mixin text-actions{
+  font-size: 13px;
+  color:#fff;
+  letter-spacing:1px;
+  position:relative;
+  top:-5px;
+  left:-10px;
+  text-transform: uppercase; 
+}
 
 
 

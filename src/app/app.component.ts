@@ -1,11 +1,16 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,NgZone } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { IntroPage } from '../pages/intro/intro';
-import { MainPage } from '../pages/main/main';
+import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
+//import { RegistrationPage } from '../pages/registration /registration';
 import { PlaylistPage } from '../pages/playlist/playlist';
+import { HomePage } from '../pages/home/home';
+import { MainPage } from '../pages/main/main';
+import { AuthService } from '../providers/auth-service';
 
+import  firebase  from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,24 +18,45 @@ import { PlaylistPage } from '../pages/playlist/playlist';
 export class MyApp {
  @ViewChild(Nav) nav: Nav;
 
-  rootPage = IntroPage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
+  
+  zone: NgZone;
 
-  constructor(public platform: Platform, public alertCtrl: AlertController) {
-    this.initializeApp();
+  constructor(platform: Platform, public alertCtrl: AlertController,public authData: AuthService) {
+    this.zone = new NgZone({})
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      this.zone.run( () => {
+        if (!user) {
+          this.rootPage = IntroPage;
+          unsubscribe();
+        } else { 
+          this.rootPage = MainPage;
+          unsubscribe();
+        }
+      });     
+    });
 
-    this.pages =[
+   this.pages =[
       {title: 'Profile',  component: ProfilePage},
-      {title: 'Playlist', component: PlaylistPage}
+      {title: 'View Playlists', component: PlaylistPage}
     ];
+
+
+   platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      StatusBar.styleDefault();
+      Splashscreen.hide();
+    });
   }
 
   openPage(page){
     this.nav.setRoot(page.component);
   }
 
- doPrompt() {
+  doPrompt() {
     let prompt = this.alertCtrl.create({
       title: 'Create Playlist',
       message: "Enter a name for this new Playlist",
@@ -61,13 +87,11 @@ export class MyApp {
   openMain(){
     this.nav.setRoot(MainPage);
   }
-  
- initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
-    });
-  }
+
+  logOut(){
+    this.authData.logoutUser().then(() => {
+    this.nav.setRoot(HomePage);
+  });
+ }     
+
 }
