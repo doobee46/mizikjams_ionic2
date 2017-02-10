@@ -4,8 +4,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { RegistrationPage } from '../registration/registration';
 import { EmailValidator } from '../../validators/email';
-import { ResetpasswordPage } from '../resetpassword/resetpassword';
+import { ResetPasswordPage } from '../resetpassword/resetpassword';
 import { MainPage } from '../main/main';
+import { MenuController } from 'ionic-angular';
 
 @Component({
   selector: 'page-login',
@@ -20,12 +21,15 @@ export class LoginPage {
 
   constructor(public nav: NavController, public authData: AuthService, 
     public formBuilder: FormBuilder, public alertCtrl: AlertController, 
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController, public menuCtrl: MenuController ) {
+    
+    this.menuCtrl.enable(false);
 
     this.loginForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
     });
+ 
   }
 
   elementChanged(input){
@@ -70,7 +74,7 @@ export class LoginPage {
   }
 
   goToResetPassword(){
-    this.nav.push(ResetpasswordPage);
+    this.nav.push(ResetPasswordPage);
   }
 
  

@@ -15,8 +15,8 @@
   </ion-toolbar>
 </ion-header>  
 <ion-content class=" mainpage card-background-page ">                   
-  <ion-list class="videolist" >
-    <ion-item class="videoitem" >
+  <div class="videolist" >
+    <div class="videoitem" *ngFor="let video of videos" >
        <div class="video-wrapper">
          <div class="masking">       
          <img src="assets/img/dat7.png"/>
@@ -24,9 +24,9 @@
          <div class="widgets">
          <!--<div class="play">
            <img src="assets/img/play.png"/>
-         </div>
-         <p>video title</p>
-         <!--<h3>{{video.band}}</h3>-->
+         </div>-->
+         <p>{{video.title}}</p>
+         <h3>{{video.band}}</h3>
         <ion-grid>
           <ion-row>
             <ion-col width-60 class="col1">
@@ -57,8 +57,8 @@
         </ion-grid>
          </div>
        </div>
-    </ion-item>
-  </ion-list>
+    </div>
+  </div>
   <div class="floatingbtn">
     <ion-fab bottom right edge >
       <button ion-fab color="orange" (click)="search();"><ion-icon name="search"></ion-icon></button>

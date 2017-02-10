@@ -12,7 +12,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { PlaylistPage } from '../pages/playlist/playlist';
 import { AuthService } from '../providers/auth-service';
 import { SearchPage } from  '../pages/search/search';
-import { ResetpasswordPage } from '../pages/resetpassword/resetpassword';
+import { ResetPasswordPage } from '../pages/resetpassword/resetpassword';
 
 
  
@@ -44,7 +44,7 @@ import * as firebase from 'firebase';
     ProfilePage,
     PlaylistPage,
     SearchPage,
-    ResetpasswordPage
+    ResetPasswordPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -61,7 +61,7 @@ import * as firebase from 'firebase';
     ProfilePage,
     PlaylistPage,
     SearchPage,
-    ResetpasswordPage
+    ResetPasswordPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage,AuthService]
 })

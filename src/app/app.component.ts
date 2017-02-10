@@ -2,14 +2,14 @@ import { Component, ViewChild,NgZone } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { IntroPage } from '../pages/intro/intro';
-import { LoginPage } from '../pages/login/login';
+//import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 //import { RegistrationPage } from '../pages/registration /registration';
 import { PlaylistPage } from '../pages/playlist/playlist';
 import { HomePage } from '../pages/home/home';
 import { MainPage } from '../pages/main/main';
 import { AuthService } from '../providers/auth-service';
-
+import { MenuController } from 'ionic-angular';
 import  firebase  from 'firebase';
 
 @Component({
@@ -20,12 +20,15 @@ export class MyApp {
 
   rootPage: any;
 
+  currentuser = firebase.auth().currentUser;
+
   pages: Array<{title: string, component: any}>;
   
   zone: NgZone;
 
-  constructor(platform: Platform, public alertCtrl: AlertController,public authData: AuthService) {
+  constructor(platform: Platform, public alertCtrl: AlertController,public authData: AuthService, public menuCtrl: MenuController) {
     this.zone = new NgZone({})
+    
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       this.zone.run( () => {
         if (!user) {
@@ -54,6 +57,7 @@ export class MyApp {
 
   openPage(page){
     this.nav.setRoot(page.component);
+    this.menuCtrl.close();
   }
 
   doPrompt() {
@@ -86,12 +90,16 @@ export class MyApp {
   
   openMain(){
     this.nav.setRoot(MainPage);
+    this.menuCtrl.close();
   }
 
   logOut(){
     this.authData.logoutUser().then(() => {
     this.nav.setRoot(HomePage);
   });
- }     
+  this.menuCtrl.close();
+ }  
+
+
 
 }

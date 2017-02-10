@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { MenuController } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { RegistrationPage } from '../registration/registration';
@@ -13,7 +13,9 @@ import { IntroPage } from '../intro/intro';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController,public storage: Storage) {}
+  constructor(public navCtrl: NavController,public storage: Storage, public menuCtrl: MenuController) {
+     this.menuCtrl.enable(false);
+  }
 
   navigate(){
     this.navCtrl.push(LoginPage);

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
-import { HomePage } from '../home/home';
+import { MainPage } from '../main/main';
 import { EmailValidator } from '../../validators/email';
+import { MenuController } from 'ionic-angular';
 
 @Component({
   selector: 'page-registration',
@@ -18,7 +19,9 @@ export class RegistrationPage {
 
 
   constructor(public nav: NavController, public authData: AuthService, public formBuilder: FormBuilder,
-    public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    public loadingCtrl: LoadingController, public alertCtrl: AlertController, public menuCtrl: MenuController) {
+   
+   this.menuCtrl.enable(false);
 
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -46,8 +49,11 @@ export class RegistrationPage {
     if (!this.signupForm.valid){
       console.log(this.signupForm.value);
     } else {
-      this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
-        this.nav.setRoot(HomePage);
+      this.authData.signupUser(this.signupForm.value.email, 
+        this.signupForm.value.password).then( authData => {
+        this.loading.dismiss().then( () =>{
+          this.nav.setRoot(MainPage);
+        })
       }, (error) => {
         this.loading.dismiss().then( () => {
           var errorMessage: string = error.message;
@@ -64,9 +70,7 @@ export class RegistrationPage {
         });
       });
 
-      this.loading = this.loadingCtrl.create({
-        dismissOnPageChange: true,
-      });
+      this.loading = this.loadingCtrl.create({ });
       this.loading.present();
     }
 }

@@ -22,7 +22,7 @@ export class VideoService {
     }
     // Dont have the data yet
     return new Promise(resolve => {
-      this.http.get('https://randomuser.me/api/?results=10')
+      this.http.get('http://mizikjams-lorisson.rhcloud.com/api/videos/1.json')
         .map(res => res.json())
         .subscribe(data => {
           this.videos = data.videos;

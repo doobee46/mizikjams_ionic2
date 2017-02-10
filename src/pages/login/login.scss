@@ -50,13 +50,23 @@
 .actions{
   position: relative;
   top:-10px;
-    .col1 button.left{
-      @include text-actions;
-      float:left;     
+    .col1{
+      width: 100%;
     }
-    .col2 button.right{
+     button.left{
       @include text-actions;
-      float:right;
+      padding:0;
+      position: relative;
+      left:-10px;   
+    }
+    .col2 {
+      width: 100%;
+    }
+    button.right{
+      @include text-actions;
+      padding:0;
+      position: relative;
+      right:-53px;
     }
 }
 
