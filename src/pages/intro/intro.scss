@@ -8,6 +8,9 @@ page-intro {
 
 .first{
     background-color:#FD1625;
+    img{
+        @include imgsize;
+    }
     h1{
       @include slidetext;
     }
@@ -15,6 +18,9 @@ page-intro {
 
 .second{
     background-color:#0197F6;
+    img{
+        @include imgsize;
+    }
     h1{
      @include slidetext;
     }
@@ -25,6 +31,9 @@ page-intro {
 
 .third{
     background-color:#02182B;
+    img{
+        @include imgsize;
+    }
    h1{
     @include slidetext;
    }

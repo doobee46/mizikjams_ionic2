@@ -59,7 +59,10 @@ $colors: (
   position:relative;
   text-transform: uppercase; 
 }
-
+@mixin imgsize{
+  width: 150px;
+  height: 150px;
+}
 
 
 
