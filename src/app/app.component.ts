@@ -42,8 +42,7 @@ export class MyApp {
     });
 
    this.pages =[
-      {title: 'Profile',  component: ProfilePage},
-      {title: 'View Playlists', component: PlaylistPage}
+      {title: 'Playlists', component: PlaylistPage}
     ];
 
 
@@ -51,7 +50,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
-      Splashscreen.hide();
+      Splashscreen.show();
     });
   }
 

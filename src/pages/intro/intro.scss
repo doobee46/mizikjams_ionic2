@@ -14,10 +14,13 @@ page-intro {
     h1{
       @include slidetext;
     }
+     p{
+     @include slidetext;
+    }
 }
 
 .second{
-    background-color:#0197F6;
+    background-color:#FD1625/*#0197F6*/;
     img{
         @include imgsize;
     }
@@ -30,7 +33,7 @@ page-intro {
 }
 
 .third{
-    background-color:#02182B;
+    background-color:#FD1625/*#02182B*/;
     img{
         @include imgsize;
     }

@@ -22,7 +22,7 @@ export class VideoService {
     }
     // Dont have the data yet
     return new Promise(resolve => {
-      this.http.get('http://mizikjams-lorisson.rhcloud.com/api/videos/1.json')
+      this.http.get('http://mizikjams-lorisson.rhcloud.com/api/videos.json')
         .map(res => res.json())
         .subscribe(data => {
           this.videos = data.videos;

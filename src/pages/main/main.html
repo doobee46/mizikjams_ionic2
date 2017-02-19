@@ -6,7 +6,7 @@
        <ion-icon name="search"></ion-icon>
      </button>
    </ion-buttons>-->
-   <ion-title>Library</ion-title>
+   <ion-title>Videos Library</ion-title>
    <ion-buttons end>
      <button ion-button  menuToggle icon-only icon-only color="royal">
        <ion-icon name="menu"></ion-icon>
@@ -14,19 +14,145 @@
    </ion-buttons>
   </ion-toolbar>
 </ion-header>  
-<ion-content class=" mainpage card-background-page ">                   
-  <div class="videolist" >
-    <div class="videoitem" *ngFor="let video of videos" >
+<ion-content class=" mainpage card-background-page ">                 
+  <div class="videolist">
+    <div class="videoitem">
        <div class="video-wrapper">
          <div class="masking">       
-         <img src="assets/img/dat7.png"/>
+            <img src="assets/img/dat7.png"/>
          </div>
          <div class="widgets">
          <!--<div class="play">
            <img src="assets/img/play.png"/>
          </div>-->
-         <p>{{video.title}}</p>
-         <h3>{{video.band}}</h3>
+         <p>Se Konsa</p>
+         <!--<h3>Video Band</h3>-->
+        <ion-grid>
+          <ion-row>
+            <ion-col width-60 class="col1">
+              <ul>
+                <li>
+                  <button ion-button color="light" clear outline icon-only>
+                    <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                  </button>
+                </li>
+                <li>
+                  <button ion-button color="light" clear outline icon-only>
+                    <ion-icon ios="ios-add" md="md-add"></ion-icon>
+                  </button>
+                </li>
+              </ul> 
+            </ion-col>
+            <ion-col width-40 class="col2">
+              <ul class="view">
+                <li>
+                  <button ion-button color="light" clear icon-only class="viewcount">
+                    <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+                    200 views             
+                  </button>
+                </li>
+               </ul>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+         </div>
+       </div>
+    </div>
+     <div class="videoitem">
+       <div class="video-wrapper">
+         <div class="masking">       
+            <img src="assets/img/phylicia.png"/>
+         </div>
+         <div class="widgets">
+         <!--<div class="play">
+           <img src="assets/img/play.png"/>
+         </div>-->
+         <p>mwen renmen'w</p>
+         <!--<h3>Video Band</h3>-->
+        <ion-grid>
+          <ion-row>
+            <ion-col width-60 class="col1">
+              <ul>
+                <li>
+                  <button ion-button color="light" clear outline icon-only>
+                    <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                  </button>
+                </li>
+                <li>
+                  <button ion-button color="light" clear outline icon-only>
+                    <ion-icon ios="ios-add" md="md-add"></ion-icon>
+                  </button>
+                </li>
+              </ul> 
+            </ion-col>
+            <ion-col width-40 class="col2">
+              <ul class="view">
+                <li>
+                  <button ion-button color="light" clear icon-only class="viewcount">
+                    <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+                    200 views             
+                  </button>
+                </li>
+               </ul>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+         </div>
+       </div>
+    </div>
+    <div class="videoitem">
+       <div class="video-wrapper">
+         <div class="masking">       
+            <img src="assets/img/nulook.jpg"/>
+         </div>
+         <div class="widgets">
+         <!--<div class="play">
+           <img src="assets/img/play.png"/>
+         </div>-->
+         <p>confessions</p>
+         <!--<h3>Video Band</h3>-->
+        <ion-grid>
+          <ion-row>
+            <ion-col width-60 class="col1">
+              <ul>
+                <li>
+                  <button ion-button color="light" clear outline icon-only>
+                    <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                  </button>
+                </li>
+                <li>
+                  <button ion-button color="light" clear outline icon-only>
+                    <ion-icon ios="ios-add" md="md-add"></ion-icon>
+                  </button>
+                </li>
+              </ul> 
+            </ion-col>
+            <ion-col width-40 class="col2">
+              <ul class="view">
+                <li>
+                  <button ion-button color="light" clear icon-only class="viewcount">
+                    <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+                    200 views             
+                  </button>
+                </li>
+               </ul>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+         </div>
+       </div>
+    </div>
+    <div class="videoitem">
+       <div class="video-wrapper">
+         <div class="masking">       
+            <img src="assets/img/klass.jpg"/>
+         </div>
+         <div class="widgets">
+         <!--<div class="play">
+           <img src="assets/img/play.png"/>
+         </div>-->
+         <p>mwen renmen'w</p>
+         <!--<h3>Video Band</h3>-->
         <ion-grid>
           <ion-row>
             <ion-col width-60 class="col1">
