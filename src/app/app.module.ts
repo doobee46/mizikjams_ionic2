@@ -8,9 +8,10 @@ import { MainPage } from '../pages/main/main';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
 import { IntroPage } from '../pages/intro/intro';
-import { ProfilePage } from '../pages/profile/profile';
+//import { ProfilePage } from '../pages/profile/profile';
 import { PlaylistPage } from '../pages/playlist/playlist';
 import { AuthService } from '../providers/auth-service';
+import { VideoService } from '../providers/video-service';
 import { SearchPage } from  '../pages/search/search';
 import { ResetPasswordPage } from '../pages/resetpassword/resetpassword';
 
@@ -41,7 +42,7 @@ import * as firebase from 'firebase';
     RegistrationPage,
     MainPage,
     IntroPage,
-    ProfilePage,
+    //ProfilePage,
     PlaylistPage,
     SearchPage,
     ResetPasswordPage
@@ -58,11 +59,11 @@ import * as firebase from 'firebase';
     RegistrationPage,
     MainPage,
     IntroPage,
-    ProfilePage,
+    //ProfilePage,
     PlaylistPage,
     SearchPage,
     ResetPasswordPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage,AuthService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage,AuthService,VideoService]
 })
 export class AppModule {}

@@ -3,7 +3,7 @@ import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { IntroPage } from '../pages/intro/intro';
 //import { LoginPage } from '../pages/login/login';
-import { ProfilePage } from '../pages/profile/profile';
+//import { ProfilePage } from '../pages/profile/profile';
 //import { RegistrationPage } from '../pages/registration /registration';
 import { PlaylistPage } from '../pages/playlist/playlist';
 import { HomePage } from '../pages/home/home';

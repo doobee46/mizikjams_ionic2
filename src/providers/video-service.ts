@@ -11,25 +11,20 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class VideoService {
  videos: any;
+ 
 
   constructor(public http: Http) {
     console.log('Hello videoService Provider');
   }
 
-  load() {
-    if (this.videos) {
-      return Promise.resolve(this.videos);
-    }
-    // Dont have the data yet
-    return new Promise(resolve => {
-      this.http.get('http://mizikjams-lorisson.rhcloud.com/api/videos.json')
-        .map(res => res.json())
-        .subscribe(data => {
-          this.videos = data.videos;
-          resolve(this.videos);
-        });
-    });
-  }  
+
+    getVideos(){
+    return this.http.get('http://mizikjams-lorisson.rhcloud.com/api/videos.json')
+    .map(res => res.json());
+
+  }
+    
+ 
  
 
 }
