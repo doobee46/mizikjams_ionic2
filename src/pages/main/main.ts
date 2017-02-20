@@ -23,10 +23,26 @@ export class MainPage {
     //this.videos = this.videoService.getVideos();
     this.menuCtrl.enable(true);
   }
-  
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    setTimeout(() => {
+      this.videos = this.videoService.getVideos();
+      refresher.complete();
+    }, 2000);
+  }
+
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      this.videos = this.videoService.getVideos();
+      infiniteScroll.complete();  
+    }, 500);
+  }
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
-    //this.videos = this.videoService.getVideos();
     let loader = this.loadingCtrl.create({
       content: 'Loading...',
     });
@@ -48,6 +64,10 @@ export class MainPage {
     this.navCtrl.push(SearchPage);
   }
 
+  playVideo(){
+   console.log("item clicked")
+  }
+
   tapEvent(e){
     this.favorite = true;
     let toast = this.toastCtrl.create({
@@ -57,5 +77,6 @@ export class MainPage {
     toast.present();
   }
 
+   
 
 }
