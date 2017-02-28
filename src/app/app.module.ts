@@ -3,18 +3,17 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { RegistrationPage } from '../pages/registration/registration';
+import { SignupPage } from '../pages/signup/signup';
 import { MainPage } from '../pages/main/main';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
 import { IntroPage } from '../pages/intro/intro';
 //import { ProfilePage } from '../pages/profile/profile';
 import { PlaylistPage } from '../pages/playlist/playlist';
-import { AuthService } from '../providers/auth-service';
-import { VideoService } from '../providers/video-service';
+import { BackandService } from '../providers/backandService'
 import { SearchPage } from  '../pages/search/search';
-import { ResetPasswordPage } from '../pages/resetpassword/resetpassword';
-
+//import { ResetPasswordPage } from '../pages/resetpassword/resetpassword';
+import { VideodetailsPage } from'../pages/videodetails/videodetails';
 
  
 const cloudSettings: CloudSettings = {
@@ -23,7 +22,7 @@ const cloudSettings: CloudSettings = {
   }
 };
 
-import * as firebase from 'firebase';
+/*import * as firebase from 'firebase';
 
     export const firebaseConfig = {
       apiKey: "AIzaSyCf4h-LHMweQH7sJPgUgSpwhBphjMk-WHI",
@@ -32,20 +31,21 @@ import * as firebase from 'firebase';
       storageBucket: "mizikjams.appspot.com",
       messagingSenderId: "243758758487"
     };
-    firebase.initializeApp(firebaseConfig); 
+    firebase.initializeApp(firebaseConfig); */
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
-    RegistrationPage,
+    SignupPage,
     MainPage,
     IntroPage,
     //ProfilePage,
     PlaylistPage,
     SearchPage,
-    ResetPasswordPage
+    //ResetPasswordPage,
+    VideodetailsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -56,14 +56,15 @@ import * as firebase from 'firebase';
     MyApp,
     HomePage,
     LoginPage,
-    RegistrationPage,
+    SignupPage,
     MainPage,
     IntroPage,
     //ProfilePage,
     PlaylistPage,
     SearchPage,
-    ResetPasswordPage
+    //ResetPasswordPage,
+    VideodetailsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage,AuthService,VideoService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage, BackandService]
 })
 export class AppModule {}

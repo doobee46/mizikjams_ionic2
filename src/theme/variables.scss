@@ -38,6 +38,7 @@ $colors: (
   background: -webkit-linear-gradient(top,  #fd1721 0%,#2e294e 100%);
   background: linear-gradient(to bottom,  #fd1721 0%,#2e294e 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd1721', endColorstr='#2e294e',GradientType=0 );
+ 
 }
 
 @mixin mask {
@@ -62,6 +63,7 @@ $colors: (
 @mixin imgsize{
   width:185px;
   height: 100%;
+  
 }
 
 $refresher-icon-color: #fff;

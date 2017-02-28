@@ -1,81 +1,111 @@
-import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
-import { FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../providers/auth-service';
-import { RegistrationPage } from '../registration/registration';
-import { EmailValidator } from '../../validators/email';
-import { ResetPasswordPage } from '../resetpassword/resetpassword';
+import {Component} from '@angular/core';
+// import {bootstrap} from '@angular/platform-browser-dynamic';
+import 'rxjs/Rx'
+import { NavController} from 'ionic-angular';
+import { BackandService } from '../../providers/backandService'
+import { SignupPage } from '../signup/signup';
 import { MainPage } from '../main/main';
 import { MenuController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+    templateUrl: 'login.html',
+    selector: 'page-login',
 })
 export class LoginPage {
-  public loginForm;
-  emailChanged: boolean = false;
-  passwordChanged: boolean = false;
-  submitAttempt: boolean = false;
-  loading: any;
-
-  constructor(public nav: NavController, public authData: AuthService, 
-    public formBuilder: FormBuilder, public alertCtrl: AlertController, 
-    public loadingCtrl: LoadingController, public menuCtrl: MenuController ) {
     
-    this.menuCtrl.enable(false);
+    username:string = '';
+    password:string = '';
+    auth_type:string = "N/A";
+    is_auth_error:boolean = false;
+    auth_status:string = null;
+    loggedInUser: string = '';
 
-    this.loginForm = formBuilder.group({
-      email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
-    });
- 
-  }
 
-  elementChanged(input){
-    let field = input.inputControl.name;
-    this[field + "Changed"] = true;
-  }
+    oldPassword: string = '';
+    newPassword: string = '';
+    confirmNewPassword: string = '';
 
-  loginUser(){
 
-    this.submitAttempt = true;
-
-    if (!this.loginForm.valid){
-      console.log(this.loginForm.value);
-    } else {
-      this.authData.loginUser(this.loginForm.value.email, 
-        this.loginForm.value.password).then( authData => {
-        this.loading.dismiss().then( () =>{
-          this.nav.setRoot(MainPage);
-        })
-      }, error => {
-        this.loading.dismiss().then( () => {
-          let alert = this.alertCtrl.create({
-            message: error.message,
-            buttons: [
-              {
-                text: "Ok",
-                role: 'cancel'
-              }
-            ]
-          });
-          alert.present();          
-        });
-      });
-
-      this.loading = this.loadingCtrl.create({ });
-      this.loading.present();
+    constructor(public backandService:BackandService,  public navCtrl: NavController) { 
+        this.auth_type = backandService.getAuthType();
+        this.auth_status = backandService.getAuthStatus();
+        this.loggedInUser = backandService.getUsername();
     }
+
+
+    public getAuthTokenSimple() {
+
+        this.auth_type = 'Token';
+        var $obs = this.backandService.signin(this.username, this.password);
+        $obs.subscribe(
+            data => {
+                this.auth_status = 'OK';
+                this.is_auth_error = false;
+                this.loggedInUser = this.username;
+                this.username = '';
+                this.password = '';
+                this.navCtrl.setRoot(MainPage);
+            },
+            err => {
+                var errorMessage = this.backandService.extractErrorMessage(err);
+
+                this.auth_status = `Error: ${errorMessage}`;
+                this.is_auth_error = true;
+                this.backandService.logError(err)
+            },
+            () => console.log('Finish Auth'));
+            
+    }
+
+    public useAnonymousAuth() {
+        this.backandService.useAnonymousAuth();
+        this.auth_status = 'OK';
+        this.is_auth_error = false;
+        this.auth_type = 'Anonymous';
+        this.loggedInUser = 'Anonymous';
+    }
+
+    public signOut() {
+        this.auth_status = null;
+        this.backandService.signout();
+    }
+
+    goToSignup(){
+      this.navCtrl.push(SignupPage);
+    }
+
+
+   public socialSignin(provider) {
+    var $obs = this.backandService.socialSignin(provider);
+    $obs.subscribe(                
+        data => {
+            console.log('Sign up succeeded with:' + provider); 
+            this.navCtrl.setRoot(MainPage);          
+        },
+        err => {
+            this.backandService.logError(err)
+        },
+        () => console.log('Finish Auth'));
+        
+    }
+
+
+   public changePassword() {
+      if (this.newPassword != this.confirmNewPassword){
+          alert('Passwords should match');
+          return;
+      }
+      var $obs = this.backandService.changePassword(this.oldPassword, this.newPassword);
+      $obs.subscribe(
+          data => {
+              alert('Password changed');
+              this.oldPassword = this.newPassword = this.confirmNewPassword = '';
+              this.navCtrl.setRoot(MainPage);
+          },
+          err => {
+              this.backandService.logError(err)
+          },
+          () => console.log('Finish change password'));
   }
 
-  goToSignup(){
-    this.nav.push(RegistrationPage);
-  }
-
-  goToResetPassword(){
-    this.nav.push(ResetPasswordPage);
-  }
-
- 
 }

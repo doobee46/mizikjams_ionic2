@@ -1,0 +1,46 @@
+<ion-content class="login" padding>
+    <ion-navbar class="head-nav" transparent color="#fff">
+      <ion-title>Sign up</ion-title>
+    </ion-navbar>
+      <h1 class="pagetitle page-adjust">create an Account</h1>
+         <ion-list>
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="email" [value]="email" (input)="email = $event.target.value"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>First Name</ion-label>
+            <ion-input type="text" [value]="firstName" (input)="firstName = $event.target.value"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Last Name</ion-label>
+            <ion-input type="text" [value]="lastName" (input)="lastName = $event.target.value"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" [value]="signUpPassword" (input)="signUpPassword = $event.target.value"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Confirm Password</ion-label>
+            <ion-input type="password" [value]="confirmPassword" (input)="confirmPassword = $event.target.value"></ion-input>
+        </ion-item>
+        <ion-item >
+        </ion-item>
+        <!--<h4 style="color:#fff;" ng-bind="vm.errorMessage"></h4>--> 
+    </ion-list>
+        
+      <div class="cta page-adjust">
+        <button ion-button block round (click)="signUp()">Sign Up</button>
+      </div>
+      <div class="separator"></div>
+      <div class="cta-social page-adjust">
+        <button ion-button block round icon-right color="primary"(click)="socialSignin('facebook')" type="button">
+          Sign up with
+         <ion-icon name="logo-facebook" ></ion-icon>
+        </button>
+      </div>
+      <div class="acknowledgment">
+        <p>By creating an account you agree to our <span>Privacy policy </span> and <span>Term of service</span></p>
+      </div>
+</ion-content>
+

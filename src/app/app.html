@@ -4,43 +4,24 @@
 // That is determined by the last line in this -->
 <ion-menu [content]="content">
  
-<!-- The side menu title -->
+<!-- The side menu title-->
 <ion-header>
   <ion-toolbar color="orange">
     <ion-title>Menu</ion-title>
   </ion-toolbar>
 </ion-header>
-  <ion-content>
-    <div class="mini-profile" >
-        <div class="avatar">
-          <ion-thumbnail item-left>
-            <img src="assets/img/avatar.png">
-          </ion-thumbnail>
-        </div>
-        <div class="avatar-info">
-          <h3>John Doe </h3>
-          <p> member since october 2015 </p>
-        </div>
-    </div>
-    <ion-list>
-      <button ion-item (click)="openMain()">
-        Home
-      </button>
-      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+  <ion-content padding>
+   <ion-list inset class="side-list">    
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)" class="side-menu">
         {{p.title}}
       </button>
-      <button ion-item  >
-        Create Playlist
-        <ion-icon ios="ios-add" md="md-add" item-right (click)="doPrompt()"></ion-icon>
-      </button>
-      <div  class="logout">   
-        <button color="orange"  ion-button outline small (click)="logOut()">
-          Logout
-        </button>
-
-      </div>
-
-    </ion-list>
+      
+      <label *ngIf="auth_status == 'OK'">
+        <button ion-item (click)="signOut()">Sign Out</button>
+      {{loggedInUser}}
+      </label>
+  </ion-list>
+    
   </ion-content>
  
 </ion-menu>

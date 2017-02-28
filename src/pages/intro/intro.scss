@@ -7,7 +7,8 @@
 }
 
 .first{
-    background-color:#FD1625;
+    /*background-color:#FD1625*/;
+    @include bgcolor;
     img{
         @include imgsize;
     }
@@ -20,7 +21,8 @@
 }
 
 .second{
-    background-color:#FD1625/*#0197F6*/;
+    /*background-color:#FD1625 #0197F6*/;
+    @include bgcolor;
     img{
         @include imgsize;
     }
@@ -33,7 +35,8 @@
 }
 
 .third{
-    background-color:#FD1625/*#02182B*/;
+    /*background-color:#FD1625 #02182B*/;
+    @include bgcolor;
     img{
         @include imgsize;
     }
@@ -42,5 +45,6 @@
    }
    button{
     @include slidetext;
+    border-color: #fff !important;
    }
 }

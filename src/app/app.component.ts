@@ -2,62 +2,71 @@ import { Component, ViewChild,NgZone } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { IntroPage } from '../pages/intro/intro';
-//import { LoginPage } from '../pages/login/login';
-//import { ProfilePage } from '../pages/profile/profile';
-//import { RegistrationPage } from '../pages/registration /registration';
 import { PlaylistPage } from '../pages/playlist/playlist';
 import { HomePage } from '../pages/home/home';
 import { MainPage } from '../pages/main/main';
-import { AuthService } from '../providers/auth-service';
 import { MenuController } from 'ionic-angular';
-import  firebase  from 'firebase';
+import { BackandService } from '../providers/backandService';
 
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
  @ViewChild(Nav) nav: Nav;
 
-  rootPage: any;
+  auth_type:string = "N/A";
+  is_auth_error:boolean = false;
+  auth_status:string = null;
+  loggedInUser: string = '';
 
-  currentuser = firebase.auth().currentUser;
+  rootPage = IntroPage;
+
 
   pages: Array<{title: string, component: any}>;
   
-  zone: NgZone;
 
-  constructor(platform: Platform, public alertCtrl: AlertController,public authData: AuthService, public menuCtrl: MenuController) {
-    this.zone = new NgZone({})
-    
-    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      this.zone.run( () => {
-        if (!user) {
-          this.rootPage = IntroPage;
-          unsubscribe();
-        } else { 
-          this.rootPage = MainPage;
-          unsubscribe();
-        }
-      });     
-    });
+  constructor(platform: Platform, public alertCtrl: AlertController, public menuCtrl: MenuController,private backandService:BackandService) {
+
+    this.auth_type = backandService.getAuthType();
+    this.auth_status = backandService.getAuthStatus();
+    this.loggedInUser = backandService.getUsername();
 
    this.pages =[
-      {title: 'Playlists', component: PlaylistPage}
+      {title: 'Home', component: MainPage},
+      {title: 'Profile', component: PlaylistPage},
+      {title: 'Playlists', component: PlaylistPage},
+      {title: 'Settings', component: PlaylistPage},
+      
+
     ];
 
 
    platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
+      StatusBar.backgroundColorByHexString('#DF020D');
       Splashscreen.show();
+      backandService.setIsMobile(platform.is('mobile'));
+      backandService.setAppName('mizikjams');
+      backandService.setSignUpToken('f5f41682-8d49-4aae-96c6-2a16b16310f6');
+      backandService.setAnonymousToken('94f0ce70-5074-4ed5-8575-221c0a5d60b5');
     });
+    
   }
 
   openPage(page){
     this.nav.setRoot(page.component);
     this.menuCtrl.close();
   }
+
+   public signOut() {
+      this.auth_status = null;
+      this.backandService.signout();
+      this.nav.setRoot(HomePage);
+      this.menuCtrl.close();
+  }
+
 
   doPrompt() {
     let prompt = this.alertCtrl.create({
@@ -92,12 +101,6 @@ export class MyApp {
     this.menuCtrl.close();
   }
 
-  logOut(){
-    this.authData.logoutUser().then(() => {
-    this.nav.setRoot(HomePage);
-  });
-  this.menuCtrl.close();
- }  
 
 
 

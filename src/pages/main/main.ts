@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events} from 'ionic-angular';
 //import { HomePage } from '../home/home';
-import { VideoService} from '../../providers/video-service';
+//import { VideoService} from '../../providers/video-service';
 import { LoadingController } from 'ionic-angular';
 import { SearchPage } from '../search/search';
 import { MenuController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import { BackandService } from '../../providers/backandService';
+import 'rxjs/add/operator/map';
+//import { VideodetailsPage } from '../videodetails/videodetails';
 
 
 @Component({
@@ -14,69 +17,105 @@ import { ToastController } from 'ionic-angular';
 })
 
 export class MainPage {
-  public videos: any;
+ 
+  public items:any[] = [];
   public favorite: true;
+  public  video : any;
+  private pageSize: number = 20;
+  private pageNumber: number = 1;
+  private canLoadMore:boolean = true;
+  private infiniteScroll:any;
 
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  public loadingCtrl: LoadingController, public videoService: VideoService, 
-  public menuCtrl: MenuController,public toastCtrl: ToastController){
-    //this.videos = this.videoService.getVideos();
+  public loadingCtrl: LoadingController, public menuCtrl: MenuController, 
+  public toastCtrl: ToastController,public events: Events, public backandService:BackandService){
     this.menuCtrl.enable(true);
-  }
+    this.getVideos();
 
-  doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
-    setTimeout(() => {
-      this.videos = this.videoService.getVideos();
-      refresher.complete();
-    }, 2000);
-  }
+   }
 
-  doInfinite(infiniteScroll) {
-    console.log('Begin async operation');
-    setTimeout(() => {
-      this.videos = this.videoService.getVideos();
-      infiniteScroll.complete();  
-    }, 500);
-  }
-
-
-  ionViewDidLoad() {
+    ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
-    let loader = this.loadingCtrl.create({
-      content: 'Loading...',
+
+    this.events.subscribe('MainPage:reload', () => {
+      this.getVideos();
     });
 
-    loader.present().then(() => {
-      this.videoService.getVideos()
-        .subscribe(res => {
-          setTimeout(() => {
-            this.videos = this.videoService.getVideos();
-            loader.dismiss();
-          }); 
-        });
-        
-    });
+  }
 
- }
-  
+   getVideos() {
+   this.backandService.getList('videos').subscribe(
+      data => {
+        console.log(data);
+        this.items = data;
+      },
+      err => this.backandService.logError(err),
+    () => console.log('OK')
+    );
+   }
+
+
+   doRefresh(refresher) {
+    console.log('async operation');
+
+    if (this.infiniteScroll) {
+      this.pageSize = 20;
+      this.canLoadMore = true;
+      this.infiniteScroll.enable(true);
+    }
+
+    refresher.complete();
+
+    this.backandService.getList('videos').subscribe(
+      data => {
+        refresher.complete();
+        console.log(data);
+        this.items = data;
+      },
+      err => this.backandService.logError(err)
+    );
+  }
+
+
+   doInfinite(infiniteScroll) {
+
+    this.infiniteScroll = infiniteScroll;
+
+    if (!this.canLoadMore) {
+      return;
+    }
+
+    console.log('begin async operation');
+
+    this.backandService.getList('videos',this.pageSize++ , this.pageNumber++).subscribe(
+      data => {
+
+        console.log(!data);
+
+        if (data.length == 0) {
+          this.canLoadMore = false;
+          infiniteScroll.enable(false);
+          return;
+        }
+
+        infiniteScroll.complete();
+        console.log(data);
+        this.items = this.items.concat(data);
+      },
+      err => {
+        infiniteScroll.complete();
+        this.backandService.logError(err)
+      }
+    );
+  }
+
   search(){
     this.navCtrl.push(SearchPage);
   }
 
-  playVideo(){
-   console.log("item clicked")
-  }
-
-  tapEvent(e){
-    this.favorite = true;
-    let toast = this.toastCtrl.create({
-      message: `you just hearted a video`,
-      duration: 2000
-    });
-    toast.present();
-  }
-
    
 
-}
+        
+
+ }
