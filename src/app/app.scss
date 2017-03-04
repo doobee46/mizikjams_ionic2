@@ -35,9 +35,11 @@
 
 .side-list{
     position:relative;
-    top:30%
+    top:30%;
+    button.listbtn ion-label{
+      text-align: center;
+    }
 }
-
 
 .profile{
     width: 100%;

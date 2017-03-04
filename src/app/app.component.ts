@@ -1,4 +1,4 @@
-import { Component, ViewChild,NgZone } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { IntroPage } from '../pages/intro/intro';

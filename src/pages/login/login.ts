@@ -26,7 +26,8 @@ export class LoginPage {
     confirmNewPassword: string = '';
 
 
-    constructor(public backandService:BackandService,  public navCtrl: NavController) { 
+    constructor(public backandService:BackandService,  public navCtrl: NavController, public menuCtrl: MenuController) { 
+        this.menuCtrl.enable(false);
         this.auth_type = backandService.getAuthType();
         this.auth_status = backandService.getAuthStatus();
         this.loggedInUser = backandService.getUsername();

@@ -21,9 +21,9 @@
         {{p.title}}
       </button>
       
-      <label *ngIf="auth_status == 'OK'">
-        <button ion-item (click)="signOut()">Sign Out</button>
-      </label>
+      <button  class="listbtn" *ngIf="auth_status == 'OK'" ion-item (click)="signOut()">
+        Sign Out
+      </button>
   </ion-list>
    </div>
     

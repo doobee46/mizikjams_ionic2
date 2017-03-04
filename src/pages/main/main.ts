@@ -19,8 +19,9 @@ import 'rxjs/add/operator/map';
 
 export class MainPage {
  
-  public items:any[] = [];
-  public favorite: true;
+  public  items:any[] = [];
+  public  hearts:any[] = []; 
+  public  favorite: true;
   public  video : any;
   private pageSize: number = 20;
   private pageNumber: number = 1;
@@ -124,6 +125,24 @@ export class MainPage {
         band: band
     });
    console.log(key);
+  }
+
+  like(object){
+    this.backandService.create('hearts', { like: this.like }).subscribe(
+        data => {
+            // add to beginning of array
+            this.hearts.unshift({ id: null, like: this.like });
+            console.log(this.hearts);
+            this.like = object;
+        },
+        err => this.backandService.logError(err),
+        () => console.log('OK')
+      );
+    let toast = this.toastCtrl.create({ 
+    message: `Added to your favorites!`,
+    duration: 2000
+   });
+    toast.present();
   }
         
 
