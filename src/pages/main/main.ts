@@ -6,9 +6,10 @@ import { LoadingController } from 'ionic-angular';
 import { SearchPage } from '../search/search';
 import { MenuController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import { VideodetailsPage } from '../videodetails/videodetails';
 import { BackandService } from '../../providers/backandService';
 import 'rxjs/add/operator/map';
-//import { VideodetailsPage } from '../videodetails/videodetails';
+
 
 
 @Component({
@@ -115,7 +116,16 @@ export class MainPage {
   }
 
    
-
+  playvideo(key,title,views,band){
+    this.navCtrl.push(VideodetailsPage,{
+        videokey: key,
+        title: title,
+        views: views,
+        band: band
+    });
+   console.log(key);
+  }
         
 
  }
+

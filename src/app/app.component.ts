@@ -63,8 +63,9 @@ export class MyApp {
    public signOut() {
       this.auth_status = null;
       this.backandService.signout();
-      this.nav.setRoot(HomePage);
       this.menuCtrl.close();
+      this.nav.setRoot(HomePage);
+      
   }
 
 

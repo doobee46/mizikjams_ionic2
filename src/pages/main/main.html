@@ -14,7 +14,7 @@
      <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
    <div class="videolist" >
-    <div class="videoitem" *ngFor="let item of items" >
+    <div class="videoitem" *ngFor="let item of items">
        <div class="video-wrapper">
          <div class="masking">       
             <img [src]="item.image"/>
@@ -23,7 +23,7 @@
          <!--<div class="play">
            <img src="assets/img/play.png"/>
          </div>-->
-         <p>{{item.band}}</p>
+         <p (click)="playvideo(item.key,item.views,item.title, item.band);" >{{item.band }} </p>
          <h3>{{item.title}}</h3>
         <ion-grid>
           <ion-row>
