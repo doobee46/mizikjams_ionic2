@@ -1,14 +1,19 @@
 
 <ion-header>
   <ion-toolbar color="orange">
-   <ion-title>Videos Library</ion-title>
+   <ion-title><img src="assets/img/logo.png"/></ion-title>
    <ion-buttons end>
      <button ion-button menuToggle icon-only>
        <ion-icon name="menu"></ion-icon>
      </button>
    </ion-buttons>
   </ion-toolbar>
-</ion-header>  
+  <ion-searchbar
+    [(ngModel)]="searchQuery"
+    (ionInput)="filterItems($event.target.value)">
+  </ion-searchbar>
+</ion-header>
+  
 <ion-content class="mainpage" >
   <ion-refresher (ionRefresh)="doRefresh($event)">
      <ion-refresher-content></ion-refresher-content>
@@ -23,14 +28,14 @@
          <!--<div class="play">
            <img src="assets/img/play.png"/>
          </div>-->
-         <p (click)="playvideo(item.key,item.views,item.title, item.band);" >{{item.band }} </p>
+         <p (click)="playvideo(item.id,item.key,item.views,item.title,item.band);" >{{item.band }} </p>
          <h3>{{item.title}}</h3>
         <ion-grid>
           <ion-row>
             <ion-col width-60 class="col1">
               <ul>
                 <li>
-                  <button ion-button color="light" clear outline icon-only (click)="like(item);">
+                  <button ion-button color="light" clear outline icon-only (click)="like(item.id);">
                     <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
                   </button>
                 </li>
@@ -64,9 +69,9 @@
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
-<div class="floatingbtn">
+<!--<div class="floatingbtn">
     <ion-fab bottom right edge >
       <button ion-fab color="orange" (click)="search();"><ion-icon name="search"></ion-icon></button>
     </ion-fab> 
- </div>
+ </div>-->
 

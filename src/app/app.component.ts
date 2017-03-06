@@ -19,6 +19,7 @@ export class MyApp {
   is_auth_error:boolean = false;
   auth_status:string = null;
   loggedInUser: string = '';
+  title:string;
 
   rootPage = IntroPage;
 
@@ -35,10 +36,7 @@ export class MyApp {
    this.pages =[
       {title: 'Home', component: MainPage},
       {title: 'Profile', component: PlaylistPage},
-      {title: 'Playlists', component: PlaylistPage},
       {title: 'Settings', component: PlaylistPage},
-      
-
     ];
 
 
@@ -69,14 +67,14 @@ export class MyApp {
   }
 
 
-  doPrompt() {
+  addToPlaylist() {
     let prompt = this.alertCtrl.create({
       title: 'Create Playlist',
-      message: "Enter a name for this new Playlist",
+      message: "Enter a title for this new Playlist",
       inputs: [
         {
-          name: name,
-          placeholder: 'name'
+          name: this.title,
+          placeholder: 'Title'
         },
       ],
       buttons: [

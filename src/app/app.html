@@ -20,7 +20,10 @@
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)" class="side-menu">
         {{p.title}}
       </button>
-      
+      <button  (click)="addToPlaylist()" class="listbtn" ion-item>
+       Playlists
+       <ion-icon ios="ios-add" md="md-add" ></ion-icon>
+      </button>
       <button  class="listbtn" *ngIf="auth_status == 'OK'" ion-item (click)="signOut()">
         Sign Out
       </button>

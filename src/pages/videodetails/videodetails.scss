@@ -13,13 +13,27 @@ page-videodetails {
        position:relative;
        left:-20px;
     }
+    ion-list-header{
+        ion-label{
+          font-weight: bold;
+          text-align: center;
+        }
+    }
 }
-
 
 ion-scroll.related{
    position:relative;
    top:-15px;
     ion-list{
+      ion-avatar img{
+        width: 65px;
+        height:45px;
+        border-radius: 0px !important;
+      }
+    ion-label{
+      font-size: 14px;
+      text-transform: capitalize;  
+     }
     ion-icon.sharebtn{
         position:relative;
         left:-20px;
