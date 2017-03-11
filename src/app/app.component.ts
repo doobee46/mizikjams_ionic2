@@ -5,6 +5,7 @@ import { IntroPage } from '../pages/intro/intro';
 import { PlaylistPage } from '../pages/playlist/playlist';
 import { HomePage } from '../pages/home/home';
 import { MainPage } from '../pages/main/main';
+import { FrontPage } from '../pages/front/front';
 import { MenuController } from 'ionic-angular';
 import { BackandService } from '../providers/backandService';
 
@@ -21,7 +22,7 @@ export class MyApp {
   loggedInUser: string = '';
   title:string;
 
-  rootPage = IntroPage;
+  rootPage :any  = FrontPage;
 
 
   pages: Array<{title: string, component: any}>;

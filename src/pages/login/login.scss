@@ -32,6 +32,17 @@
   text-align: center;
 }
 
+ion-content{
+  ion-item{
+    ion-label{
+      ion-input.main-input{
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+
 .cta button{
   background-color: #fff !important;
   color:#FE3F21;

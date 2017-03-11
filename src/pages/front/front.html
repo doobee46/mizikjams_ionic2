@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="orange">
+   <ion-title><img src="assets/img/logo.png"/></ion-title>
+   <ion-buttons end>
+     <button ion-button menuToggle icon-only>
+       <ion-icon name="menu"></ion-icon>
+     </button>
+   </ion-buttons>
+  </ion-toolbar>
+ </ion-header>
+<ion-content>
+  <div class="topbox">
+    <img src="assets/img/bg_overlay.png"/>
+    <div class="topinfo">
+      <h3>Browse Videos</h3>
+      <button ion-button outline small  color="light" round (click)="browseVideos();">
+        GO
+      </button>
+    </div>
+  </div>
+  <div class="topvideos">
+    <h3>Top 20 videos</h3>
+     <ion-slides pager="true" >
+        <ion-slide>
+          <img src="assets/img/kai_small.png"/>
+        </ion-slide>
+         <ion-slide>
+          <img src="assets/img/kai_small.png"/>
+        </ion-slide>
+         <ion-slide>
+          <img src="assets/img/kai_small.png"/>
+        </ion-slide>
+         <ion-slide>
+          <img src="assets/img/kai_small.png"/>
+        </ion-slide>   
+    </ion-slides>
+  </div>
+</ion-content>

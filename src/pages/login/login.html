@@ -3,19 +3,19 @@
       <ion-title>Sign in</ion-title>
     </ion-navbar>
       <h1 class="pagetitle"> Log in with email</h1>
-            <ion-item>
-              <ion-label floating>Username</ion-label>
-              <ion-input type="text" [value]="username" (input)="username = $event.target.value"> 
-              </ion-input>
-            </ion-item>
-            
-            <ion-item>
-              <ion-label floating>Password</ion-label>
-              <ion-input  [value]="password" (input)="password = $event.target.value" type="password"></ion-input>
-            </ion-item>
-            <ion-item>
-            <label [class.alert]="is_auth_error" [class.alert-danger]="is_auth_error">{{auth_status}}</label>
-            </ion-item>
+      <ion-item>
+        <ion-label floating>Username</ion-label>-->
+        <ion-input class="main-input" type="text" [value]="username" (input)="username = $event.target.value"> 
+        </ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input  [value]="password" (input)="password = $event.target.value" type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+      <label [class.alert]="is_auth_error" [class.alert-danger]="is_auth_error">{{auth_status}}</label>
+      </ion-item>
 
       <div class="actions">
         <ion-grid>

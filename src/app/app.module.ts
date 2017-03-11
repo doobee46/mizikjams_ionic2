@@ -8,6 +8,7 @@ import { MainPage } from '../pages/main/main';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
 import { IntroPage } from '../pages/intro/intro';
+import { FrontPage } from '../pages/front/front';
 //import { ProfilePage } from '../pages/profile/profile';
 import { PlaylistPage } from '../pages/playlist/playlist';
 import { BackandService } from '../providers/backandService'
@@ -45,7 +46,8 @@ const cloudSettings: CloudSettings = {
     PlaylistPage,
     SearchPage,
     //ResetPasswordPage,
-    VideodetailsPage
+    VideodetailsPage,
+    FrontPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -63,7 +65,8 @@ const cloudSettings: CloudSettings = {
     PlaylistPage,
     SearchPage,
     //ResetPasswordPage,
-    VideodetailsPage
+    VideodetailsPage,
+    FrontPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage, BackandService]
 })

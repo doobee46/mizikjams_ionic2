@@ -1,0 +1,63 @@
+page-front {
+ background-color:#2E294E !important;
+  .topbox{
+      width: 100%;
+      height: 230px;
+      //border-bottom:1px solid #e13838;
+     //@include bgcolor;
+     .topinfo{
+        width: 280px;
+        height: auto;
+       // border: 1px solid #fff;
+        position: relative;
+        top: -170px;
+        margin: 0 auto;
+        h3{
+            font-size:23px;
+            font-weight: 700;
+            text-align: center;
+            text-transform:uppercase;
+            letter-spacing: 1px;
+            color:#fff;
+        }
+        button{
+            margin: 0 auto;
+            position: relative;
+            left: 35%;
+        }
+     }
+  }
+  .topvideos{
+      width: 100%;
+      height:auto;
+      padding:3px;
+    h3{
+        font-size:18px;
+        letter-spacing:2px;
+        line-height:120%;
+        font-weight:bold;
+        color:rgb(255,255,255);
+        text-align:left; 
+        margin-left:3px;
+        text-transform: uppercase;
+    }
+    ion-slides{
+        ion-slide{
+          width:123px !important;
+          margin-right:10px;
+          margin-bottom: 15px !important;
+            .slide-zoom{
+                text-align:left;
+            }
+                              
+        }
+         .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
+            bottom: -6px !important;
+            }
+
+        .swiper-pagination-bullet-active{
+                background: #f8f8f8 !important; 
+            }     
+      }
+    }
+}
