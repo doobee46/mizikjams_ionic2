@@ -18,14 +18,23 @@
       </button>
     </div>
   </div>
+  <ion-scroll class="related" scrollY="true" style="width: 100%; height: 100%;">
   <div class="topvideos">
     <h3>Top 10 videos</h3>
      <ion-slides pager="true" >
         <ion-slide>
           <img src="assets/img/kai_small.png"/>
+          <div class="playsm">
+            <img  src="assets/img/play_sm.png" (click)="playVideo();"/>
+          </div>
+          <h3>KAI-Malade</h3>
         </ion-slide>
-         <ion-slide>
-          <img src="assets/img/kai_small.png"/>
+        <ion-slide>
+          <img src="assets/img/dat7_sm.png"/>
+          <div class="playsm">
+            <img  src="assets/img/play_sm.png" (click)="playVideo();"/>
+          </div>
+          <h3>Dat7-Se konsa</h3>
         </ion-slide>
          <ion-slide>
           <img src="assets/img/kai_small.png"/>
@@ -52,4 +61,16 @@
         </ion-slide>   
     </ion-slides>
   </div>
+  <div class="topvideos">
+    <h3>Categories</h3>
+     <ion-slides pager="true" >
+        <ion-slide *ngFor="let item of items" >
+          <img src="assets/img/{{item.name}}.png"/>
+          <button ion-button outline small class="categorybtn" color="light" >
+           {{item.name}}
+          </button>
+        </ion-slide>
+    </ion-slides>
+  </div>
+  </ion-scroll>
 </ion-content>
