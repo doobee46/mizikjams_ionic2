@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage';
 import { IntroPage } from '../intro/intro';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
-import { MainPage } from '../main/main';
+import { FrontPage } from '../front/front';
 import { BackandService } from '../../providers/backandService';
 import 'rxjs/Rx'
 
@@ -41,6 +41,7 @@ constructor(public navCtrl: NavController,public storage: Storage, public menuCt
  public signOut() {
       this.auth_status = null;
       this.backandService.signout();
+      this.navCtrl.setRoot(FrontPage);
   }
 
 
@@ -50,7 +51,7 @@ public useAnonymousAuth() {
     this.is_auth_error = false;
     this.auth_type = 'Anonymous';
     this.loggedInUser = 'Anonymous';
-    this.navCtrl.setRoot(MainPage);
+    this.navCtrl.setRoot(FrontPage);
 }
 
 

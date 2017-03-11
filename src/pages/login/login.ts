@@ -4,7 +4,8 @@ import 'rxjs/Rx'
 import { NavController} from 'ionic-angular';
 import { BackandService } from '../../providers/backandService'
 import { SignupPage } from '../signup/signup';
-import { MainPage } from '../main/main';
+import { FrontPage } from '../front/front';
+import { HomePage } from '../home/home';
 import { MenuController } from 'ionic-angular';
 
 @Component({
@@ -45,7 +46,7 @@ export class LoginPage {
                 this.loggedInUser = this.username;
                 this.username = '';
                 this.password = '';
-                this.navCtrl.setRoot(MainPage);
+                
             },
             err => {
                 var errorMessage = this.backandService.extractErrorMessage(err);
@@ -63,12 +64,14 @@ export class LoginPage {
         this.auth_status = 'OK';
         this.is_auth_error = false;
         this.auth_type = 'Anonymous';
-        this.loggedInUser = 'Anonymous';
+        this.loggedInUser = 'Moblie User';
+        this.navCtrl.setRoot(FrontPage);
     }
 
     public signOut() {
         this.auth_status = null;
         this.backandService.signout();
+        this.navCtrl.setRoot(HomePage);
     }
 
     goToSignup(){
@@ -81,7 +84,7 @@ export class LoginPage {
     $obs.subscribe(                
         data => {
             console.log('Sign up succeeded with:' + provider); 
-            this.navCtrl.setRoot(MainPage);          
+            this.navCtrl.setRoot(FrontPage);          
         },
         err => {
             this.backandService.logError(err)
@@ -101,7 +104,7 @@ export class LoginPage {
           data => {
               alert('Password changed');
               this.oldPassword = this.newPassword = this.confirmNewPassword = '';
-              this.navCtrl.setRoot(MainPage);
+              this.navCtrl.setRoot(HomePage);
           },
           err => {
               this.backandService.logError(err)

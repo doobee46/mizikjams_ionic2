@@ -22,7 +22,7 @@ export class MyApp {
   loggedInUser: string = '';
   title:string;
 
-  rootPage :any  = FrontPage;
+  rootPage :any  = IntroPage;
 
 
   pages: Array<{title: string, component: any}>;
@@ -35,9 +35,9 @@ export class MyApp {
     this.loggedInUser = backandService.getUsername();
 
    this.pages =[
-      {title: 'Home', component: MainPage},
-      {title: 'Profile', component: PlaylistPage},
-      {title: 'Settings', component: PlaylistPage},
+      {title: 'Home', component: FrontPage},
+      {title: 'Browse', component: MainPage},
+      {title: 'Profile', component: PlaylistPage}
     ];
 
 
