@@ -10,13 +10,22 @@
     /*background-color:#FD1625*/;
     @include bgcolor;
     img{
-        @include imgsize;
+       @include imgsize;
     }
     h1{
       @include slidetext;
     }
      p{
-     @include slidetext;
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-align: justify;
+        width: 300px;
+        margin: 0 auto;
+        position: relative;
+        top: 15px;
+        line-height: 30px;
+        font-weight:lighter;
     }
 }
 
@@ -47,4 +56,51 @@
     @include slidetext;
     border-color: #fff !important;
    }
+}
+
+#custom-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+  width:100%;
+  background-color: #002a3e;
+}
+
+.flb {
+  background-color:#2E294E;
+  height:100%;
+  width:100%;
+  animation: pulse 1s linear forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Aligner-item {
+  max-width: 50%;
+}
+.Aligner-item--top {
+  align-self: flex-start;
+}
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+#custom-overlay img {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: auto;
+  animation: animation 3100ms linear infinite both;
+  animation-delay: 1s;
+}
+
+@keyframes pulse {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
 }

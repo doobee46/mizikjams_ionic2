@@ -9,11 +9,16 @@ import { HomePage } from '../home/home';
 })
 export class IntroPage {
 
+  splash = true;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IntroPage');
+
+    setTimeout(() => this.splash = false, 10000 );
   }
+
   navHome() {
     this.navCtrl.setRoot(HomePage);
   }

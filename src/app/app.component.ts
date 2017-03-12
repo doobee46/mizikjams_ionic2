@@ -45,7 +45,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.backgroundColorByHexString('#DF020D');
-      Splashscreen.show();
+      Splashscreen.hide();
       backandService.setIsMobile(platform.is('mobile'));
       backandService.setAppName('mizikjams');
       backandService.setSignUpToken('f5f41682-8d49-4aae-96c6-2a16b16310f6');

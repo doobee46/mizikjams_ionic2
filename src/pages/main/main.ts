@@ -94,8 +94,8 @@ export class MainPage {
    this.backandService.getList("like_count")
     .subscribe(
        data =>{
-          this.count = data;
-          console.log(this.count)
+          this.items = data;
+          console.log(this.items)
        },
         err => this.backandService.logError(err),
       () => console.log('OK')
@@ -161,28 +161,19 @@ export class MainPage {
   }
 
    
-  playvideo(id,key,title,views,band){
-     this.backandService.create('views', { video: this.video }).subscribe(
-        data => {
-            // add to beginning of array
-            //this.items.unshift({ id: null, video: this.video });
-            //console.log(this.items);
-            this.video = id;
-            console.log(this.video)
-        },
-        err => this.backandService.logError(err),
-        () => console.log('OK')
-      );
+  public playvideo(id,key,title,views,band){
+    this.trackView(id);
     this.navCtrl.push(VideodetailsPage,{
         videokey: key,
         title: title,
         views: views,
         band: band
     });
-   console.log(key + - + id);
+    
+    console.log(key + - + id);
   }
 
-   /*trackView(id){
+   public trackView(id){
     this.backandService.create('views', { video: this.video }).subscribe(
         data => {
             // add to beginning of array
@@ -195,9 +186,9 @@ export class MainPage {
         () => console.log('OK')
       );
   }
-*/
 
-  like(id){
+
+ public like(id){
     this.backandService.create('hearts', { video: this.video }).subscribe(
         data => {
             // add to beginning of array

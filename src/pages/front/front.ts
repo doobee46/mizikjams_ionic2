@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { MainPage }from '../main/main';
 import { MenuController } from 'ionic-angular';
+import { VideodetailsPage } from '../videodetails/videodetails';
 import { BackandService } from '../../providers/backandService';
 
 
@@ -17,7 +18,7 @@ export class FrontPage {
   public backandService:BackandService) {
    this.menuCtrl.enable(true);
    this.getCategory();
-   
+
     this.backandService.on("items_updated")
             .subscribe(
                 data => {
