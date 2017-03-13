@@ -10,7 +10,7 @@
  </ion-header>
 <ion-content class="front-content">
   <div class="topbox">
-    <img src="assets/img/bg_overlay.png"/>
+    <img src="assets/img/bg_overlay2.png"/>
     <div class="topinfo">
       <h3>Browse Videos</h3>
       <button ion-button outline small  color="light" round (click)="browseVideos();">
@@ -47,18 +47,13 @@
   <div class="topvideos">
     <h3>New Releases</h3>
      <ion-slides pager="true" >
-        <ion-slide>
-          <img src="assets/img/kai_small.png"/>
+        <ion-slide *ngFor="let element of elements ">
+          <img [src]="element.thumb" class="thumb"/>
+          <div class="playsm">
+            <img  src="assets/img/play_sm.png" (click)="playVideo();"/>
+          </div>
+              <h3>{{element.title}}</h3>
         </ion-slide>
-         <ion-slide>
-          <img src="assets/img/kai_small.png"/>
-        </ion-slide>
-         <ion-slide>
-          <img src="assets/img/kai_small.png"/>
-        </ion-slide>
-         <ion-slide>
-          <img src="assets/img/kai_small.png"/>
-        </ion-slide>   
     </ion-slides>
   </div>
   <div class="topvideos">

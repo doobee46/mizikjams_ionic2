@@ -5,19 +5,20 @@ import { MenuController } from 'ionic-angular';
 import { VideodetailsPage } from '../videodetails/videodetails';
 import { BackandService } from '../../providers/backandService';
 
-
-
 @Component({
   selector: 'page-front',
   templateUrl: 'front.html'
 })
 export class FrontPage {
   public  items:any[] = [];
+  public  elements:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl: MenuController,
   public backandService:BackandService) {
    this.menuCtrl.enable(true);
    this.getCategory();
+   this.getnewReleases();
+ 
 
     this.backandService.on("items_updated")
             .subscribe(
@@ -37,6 +38,7 @@ export class FrontPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FrontPage');
+      
   }
   
   public browseVideos(){
@@ -48,6 +50,17 @@ export class FrontPage {
       data => {
         console.log(data);
         this.items = data;
+      },
+      err => this.backandService.logError(err),
+    () => console.log('OK')
+    );
+  } 
+
+  getnewReleases(){
+        this.backandService.getRelease().subscribe(
+        data => {
+        console.log(data);
+        this.elements = data;
       },
       err => this.backandService.logError(err),
     () => console.log('OK')

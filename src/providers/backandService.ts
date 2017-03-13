@@ -680,6 +680,15 @@ export class BackandService {
         }
     }
 
+
+    public getRelease(){
+        return this.http.get(this.api_url + '/1/query/data/newReleases', {
+                headers: this.authHeader
+            })
+            .retry(3)
+            .map(res => res.json());
+    }
+
     private setAuthenticationState(): boolean {
         let storedToken = localStorage.getItem('auth_token');
         if (storedToken){

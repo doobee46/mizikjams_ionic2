@@ -42,8 +42,8 @@ $colors: (
 }
 
 @mixin mask {
-  background: -webkit-linear-gradient(transparent, #000) left repeat;
-  background: linear-gradient(transparent, #000) left repeat;
+  background: -webkit-linear-gradient(transparent, #2E294E) left repeat;
+  background: linear-gradient(transparent, #2E294E) left repeat;
   z-index:100;
 }
 

@@ -11,7 +11,7 @@ import { IntroPage } from '../pages/intro/intro';
 import { FrontPage } from '../pages/front/front';
 //import { ProfilePage } from '../pages/profile/profile';
 import { PlaylistPage } from '../pages/playlist/playlist';
-import { BackandService } from '../providers/backandService'
+import { BackandService } from '../providers/backandService';
 import { SearchPage } from  '../pages/search/search';
 //import { ResetPasswordPage } from '../pages/resetpassword/resetpassword';
 import { VideodetailsPage } from'../pages/videodetails/videodetails';
