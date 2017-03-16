@@ -12,6 +12,11 @@ import { BackandService } from '../../providers/backandService';
 export class FrontPage {
   public  items:any[] = [];
   public  elements:any;
+  public key;
+  public url;
+  public title;
+  public band;
+  public category_id:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl: MenuController,
   public backandService:BackandService) {
@@ -57,7 +62,7 @@ export class FrontPage {
   } 
 
   getnewReleases(){
-        this.backandService.getRelease().subscribe(
+    this.backandService.getRelease().subscribe(
         data => {
         console.log(data);
         this.elements = data;
@@ -65,7 +70,19 @@ export class FrontPage {
       err => this.backandService.logError(err),
     () => console.log('OK')
     );
-  } 
+  }
 
+     
+   public playvideo(id,key,title,band,category_id){
+    this.navCtrl.push(VideodetailsPage,{
+        id :id,
+        videokey: key,
+        title: title,
+        band: band,
+        category:category_id
+    });
+    
+    console.log(category_id);
+  }
 
 }

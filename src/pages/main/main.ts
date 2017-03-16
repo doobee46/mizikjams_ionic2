@@ -161,16 +161,15 @@ export class MainPage {
   }
 
    
-  public playvideo(id,key,title,views,band){
-    this.trackView(id);
+  public playvideo(id,key,title,band,category_id){
     this.navCtrl.push(VideodetailsPage,{
         videokey: key,
         title: title,
-        views: views,
-        band: band
+        band: band,
+        category:category_id
     });
     
-    console.log(key + - + id);
+    console.log(category_id);
   }
 
    public trackView(id){
@@ -189,7 +188,7 @@ export class MainPage {
 
 
  public like(id){
-    this.backandService.create('hearts', { video: this.video }).subscribe(
+    this.backandService.create('hearts', {video: this.video} ).subscribe(
         data => {
             // add to beginning of array
             //this.items.unshift({ id: null, video: this.video });

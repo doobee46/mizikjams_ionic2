@@ -17,22 +17,24 @@ export class VideodetailsPage {
   public key;
   public url;
   public title;
-  public views;
   public band;
+  public category_id:string;
+  public params:any;
 
   constructor(public navCtrl: NavController,private sanitizer: DomSanitizer,
    public navParams: NavParams,public loadingCtrl: LoadingController,
    public menuCtrl: MenuController,public backandService:BackandService) {
    this.menuCtrl.enable(true);
-   this.key = navParams.get('videokey');
+   this.key   = navParams.get('videokey');
    this.title = navParams.get('title');
-   this.views = navParams.get('views');
-   this.band = navParams.get('band');
-  /* console.log(this.key)
+   this.band  = navParams.get('band');
+   this.category_id = navParams.get('category')
+   console.log(this.key)
    console.log(this.title)
-   console.log( this.views)
-   console.log( this.band)*/
-   this.getVideos();
+   console.log(this.band)
+   console.log(this.category_id)
+   //this.getVideos();
+   this.getRelated();
   }
 
   ionViewDidLoad() {
@@ -45,15 +47,15 @@ export class VideodetailsPage {
       // console.log(this.key)
   }
 
- getVideos() {
+ getRelated() {
    let loader = this.loadingCtrl.create({
         //content: '...',
       })
       loader.present().then(() => {
-         this.backandService.getList('videos',10).subscribe(
-            data => {
-              console.log(data);
+         this.backandService.getRelated(this.category_id).subscribe(
+           data => {
               this.items = data;
+              console.log(this.items);
             },
             err => this.backandService.logError(err),
           () => console.log('OK')
@@ -65,6 +67,8 @@ export class VideodetailsPage {
    goBack(){
      this.navCtrl.pop(MainPage);
    }
+
+  
 
 
 }

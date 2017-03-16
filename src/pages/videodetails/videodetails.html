@@ -21,14 +21,15 @@
         <ion-icon class="sharebtn"name="ios-share-alt-outline" item-right></ion-icon>
         <ion-icon name="add" item-right></ion-icon>
       </ion-item>
-       <ion-list-header>
-        Related Videos
-      </ion-list-header>
+       
     </ion-list>
   </div>
 
    <ion-scroll class="related" scrollY="true" style="width: 100%; height: 100%;">
     <ion-list >
+      <ion-list-header>
+        Related Videos
+      </ion-list-header>
       <ion-item *ngFor="let item of items">
         <ion-avatar item-left>
           <img [src]="item.image">

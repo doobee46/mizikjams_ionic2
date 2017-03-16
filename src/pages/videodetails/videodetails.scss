@@ -13,18 +13,20 @@ page-videodetails {
        position:relative;
        left:-20px;
     }
-    ion-list-header{
-        ion-label{
-          font-weight: bold;
-          text-align: center;
-        }
-    }
+    
 }
 
 ion-scroll.related{
    position:relative;
    top:-15px;
     ion-list{
+      ion-list-header{
+        ion-label{
+          font-weight: normal;
+          text-align: center;
+          text-transform:uppercase;
+        }
+    }
       ion-avatar img{
         width: 65px;
         height:45px;

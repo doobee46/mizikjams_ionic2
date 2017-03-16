@@ -678,13 +678,23 @@ export class BackandService {
         else{
             return null;
         }
-    }
+    } 
 
 
     public getRelease(){
         return this.http.get(this.api_url + '/1/query/data/newReleases', {
                 headers: this.authHeader
             })
+            .retry(3)
+            .map(res => res.json());
+    }
+
+
+    public getRelated(category_id){
+        let encodedUrl =encodeURIComponent(JSON.stringify({"category_id":category_id}));
+        return this.http.get(this.api_url + '/1/query/data/relatedVideos?parameters='+encodedUrl,{
+                headers: this.authHeader  
+        })
             .retry(3)
             .map(res => res.json());
     }

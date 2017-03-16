@@ -12,7 +12,7 @@
   <div class="topbox">
     <img src="assets/img/bg_overlay2.png"/>
     <div class="topinfo">
-      <h3>Browse Videos</h3>
+      <h3>Browse Library</h3>
       <button ion-button outline small  color="light" round (click)="browseVideos();">
         GO
       </button>
@@ -50,9 +50,11 @@
         <ion-slide *ngFor="let element of elements ">
           <img [src]="element.thumb" class="thumb"/>
           <div class="playsm">
-            <img  src="assets/img/play_sm.png" (click)="playVideo();"/>
+            <img  src="assets/img/play_sm.png" (click)="playvideo(element.id, element.key, element.title, element.band, element.category_id);"/>
           </div>
               <h3>{{element.title}}</h3>
+              <h3>{{element.key}}</h3>
+              <h3>{{element.category_id}}</h3>
         </ion-slide>
     </ion-slides>
   </div>
