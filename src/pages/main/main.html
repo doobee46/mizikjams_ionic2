@@ -32,13 +32,13 @@
     <div class="videoitem" *ngFor="let item of items">
        <div class="video-wrapper">
          <div class="masking">       
-            <img [src]="item.image"/>
+            <img [src]="item.image" />
          </div>
          <div class="widgets">
          <!--<div class="play">
            <img src="assets/img/play.png"/>
          </div>-->
-         <p (click)="playvideo(item.id,item.key,item.title,item.band,item.category_id);" >{{item.title}} </p>
+         <p (click)="playvideo(item.id,item.key,item.title,item.band,item.category_id);">{{item.title}} </p>
          <h3>{{item.band}}</h3>
         <ion-grid>
           <ion-row>

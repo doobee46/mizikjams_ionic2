@@ -15,12 +15,14 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+@import 'font-awesome';
+
 
 .content-side{
   @include bgcolor;
   
 }
-*
+
 .side-menu{
     .label{
         text-align:center;
