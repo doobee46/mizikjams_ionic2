@@ -18,9 +18,9 @@
       </button>
     </div>
   </div>
-  <!--<ion-scroll class="related" scrollY="true" style="width: 100%; height: 100%;">-->
+  <!-- <ion-scroll class="related" scrollY="true" style="width: 100%; height: 100%;">-->
   <div class="topvideos">
-    <h3>Top 10 videos</h3>
+    <h3>Most Viewed videos</h3>
      <ion-slides pager="true" >
         <ion-slide>
           <img src="assets/img/kai_small.png"/>
@@ -48,7 +48,8 @@
     <h3>New Releases</h3>
      <ion-slides pager="true" >
         <ion-slide *ngFor="let element of elements ">
-          <img [src]="element.thumb" class="thumb"/>
+          <div class="masking-thumb"></div>
+             <img [src]="element.thumb" class="thumb"/>
           <div class="playsm">
             <img  src="assets/img/play_sm.png" (click)="playvideo(element.id, element.key, element.title, element.band, element.category_id);"/>
           </div>
@@ -57,7 +58,7 @@
     </ion-slides>
   </div>
   <div class="topvideos">
-    <h3>Categories</h3>
+    <h3>Genres</h3>
      <ion-slides pager="true" >
         <ion-slide *ngFor="let item of items" >
           <img src="assets/img/{{item.name}}.png"/>
