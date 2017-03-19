@@ -17,8 +17,9 @@
         <h2>{{title}}</h2>
         <h3>{{band}}</h3>
         <h3>{{views}}</h3>
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
         <p></p>
-        <i class="fa fa-ellipsis-v fa-3x" aria-hidden="true" ion-button clear  item-right></i>
+        <i class="fa fa-ellipsis-v fa-3x" aria-hidden="true" ion-button clear ion-text  color='dark' (click)="openMenu()" item-right></i>
       </ion-item>
        
     </ion-list>
@@ -31,11 +32,12 @@
       </ion-list-header>
       <ion-item *ngFor="let item of items">
         <ion-avatar item-left>
-          <img [src]="item.image">
+          <img [src]="item.image_url">
         </ion-avatar>
         <h2>{{item.band}}</h2>
         <p>{{item.title}}</p>
-        <i class="fa fa-ellipsis-v fa-3x " aria-hidden="true" ion-button clear  item-right></i>
+        {{item.heart}}<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+        <i class="fa fa-ellipsis-v fa-3x " aria-hidden="true" ion-button clear  ion-text color='dark' (click)="openMenu()"  item-right></i>
         <!--<ion-icon class="sharebtn"name="ios-share-alt-outline" item-right></ion-icon>
         <ion-icon name="add" item-right></ion-icon>-->
       </ion-item>

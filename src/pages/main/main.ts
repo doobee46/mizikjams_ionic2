@@ -21,10 +21,12 @@ export class MainPage {
  
   public  items:any[] = [];
   public  favorite: true;
-  public  video: any;
+  public  video;
   public  deep:boolean = true;
   public  view: number;
   public  count: number;
+  public  heartcount:any;
+  public  id:string;
   private pageSize: number = 20;
   private pageNumber: number = 1;
   private canLoadMore:boolean = true;
@@ -37,6 +39,7 @@ export class MainPage {
     this.searchQuery = '';
     this.menuCtrl.enable(true);
     this.getVideos();
+    this.trackView(this.id);
 
     this.backandService.on("items_updated")
             .subscribe(
@@ -65,22 +68,23 @@ export class MainPage {
         content: 'Getting latest entries...',
       })
       loader.present().then(() => {
-         this.backandService.getList('videos',null,null,null,null,this.deep).subscribe(
+
+         /*this.backandService.getList('videos',null,null,null,null,this.deep=true,null,).subscribe(
             data => {
               console.log(data);
               this.items = data;
             },
             err => this.backandService.logError(err),
           () => console.log('OK')
-          );
+          );*/
         loader.dismiss();
       });
     });
 
   }
 
-   getVideos() {
-   this.backandService.getList('videos',null,null,null,null,this.deep).subscribe(
+   public getVideos() {
+   this.backandService.getList('videos',null,null,null,null,this.deep=true,null ).subscribe(
       data => {
         console.log(data);
         this.items = data;
@@ -89,18 +93,6 @@ export class MainPage {
     () => console.log('OK')
     );
    }
-
- getLikeCount(id){
-   this.backandService.getList("like_count")
-    .subscribe(
-       data =>{
-          this.items = data;
-          console.log(this.items)
-       },
-        err => this.backandService.logError(err),
-      () => console.log('OK')
-    );
-  }
 
    doRefresh(refresher) {
     console.log('async operation');
@@ -134,7 +126,7 @@ export class MainPage {
 
     console.log('begin async operation');
 
-    this.backandService.getList('videos',this.pageSize++ , this.pageNumber++).subscribe(
+    this.backandService.getList('videos',this.pageSize++ , this.pageNumber++,null,null,this.deep=true,null).subscribe(
       data => {
 
         console.log(!data);
@@ -161,40 +153,44 @@ export class MainPage {
   }
 
    
-  public playvideo(id,key,title,band,category_id){
+  public playvideo(id,key,title,band,category_id,heart){
     this.navCtrl.push(VideodetailsPage,{
         videokey: key,
         title: title,
         band: band,
-        category:category_id
+        category:category_id,
+        heart:heart
+    }).then(()=>{
+       this.trackView(id);
     });
     
-    console.log(category_id);
+    console.log(id);
   }
 
-   public trackView(id){
-    this.backandService.create('views', { video: this.video }).subscribe(
-        data => {
-            // add to beginning of array
-            //this.items.unshift({ id: null, video: this.video });
-            //console.log(this.items);
-            this.video = id;
-            console.log(this.video)
-        },
-        err => this.backandService.logError(err),
-        () => console.log('OK')
-      );
-  }
+
+  trackView(id){
+    this.backandService.create('views', { video: this.video}).subscribe(
+            data => {
+                // add to beginning of array
+               // this.videos.unshift({ id: null, video: this.video });
+                //console.log(this.items);
+                this.video = id;               
+            },
+            err => this.backandService.logError(err),
+            () => console.log('OK')
+        );
+    }
+
 
 
  public like(id){
-    this.backandService.create('hearts', {video: this.video} ).subscribe(
+    this.backandService.update('videos', id,  {hearts: this.heartcount}).subscribe(
         data => {
             // add to beginning of array
             //this.items.unshift({ id: null, video: this.video });
             //console.log(this.items);
-            this.video = id;
-            console.log(this.video)
+            //   this.heartcount = "";
+            console.log(this.heartcount)
         },
         err => this.backandService.logError(err),
         () => console.log('OK')
@@ -205,6 +201,8 @@ export class MainPage {
    });
     toast.present();
   }
+
+
 
    public filterItems(searchbar) {
         // set q to the value of the searchbar

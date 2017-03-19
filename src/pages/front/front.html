@@ -49,7 +49,7 @@
      <ion-slides pager="true" >
         <ion-slide *ngFor="let element of elements ">
           <div class="masking-thumb"></div>
-             <img [src]="element.thumb" class="thumb"/>
+             <img [src]="element.thumb_url" class="thumb"/>
           <div class="playsm">
             <img  src="assets/img/play_sm.png" (click)="playvideo(element.id, element.key, element.title, element.band, element.category_id);"/>
           </div>
