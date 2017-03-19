@@ -8,6 +8,7 @@ import { MenuController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { VideodetailsPage } from '../videodetails/videodetails';
 import { BackandService } from '../../providers/backandService';
+import { AdMobPro } from '../../providers/admobpro';
 import 'rxjs/add/operator/map';
 
 
@@ -31,11 +32,13 @@ export class MainPage {
   private pageNumber: number = 1;
   private canLoadMore:boolean = true;
   private infiniteScroll:any;
+
   searchQuery: string;
  
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public loadingCtrl: LoadingController, public menuCtrl: MenuController, 
-  public toastCtrl: ToastController,public events: Events, public backandService:BackandService){
+  public toastCtrl: ToastController,public events: Events, public backandService:BackandService,
+  private adMobPro: AdMobPro){
     this.searchQuery = '';
     this.menuCtrl.enable(true);
     this.getVideos();
@@ -162,9 +165,28 @@ export class MainPage {
         heart:heart
     }).then(()=>{
        this.trackView(id);
+    }).then(()=>{
+       this.showBanner();
     });
     
     console.log(id);
+  }
+
+
+  showBanner(){
+    console.log('showBanner');
+    this.adMobPro.showBanner();
+  }
+
+  removeBanner(){
+    console.log('removeBanner');
+    this.adMobPro.removeAds();
+  }
+
+
+  showInterstitial(){
+    console.log('showInterstitial');
+    this.adMobPro.showInterstitial();
   }
 
 

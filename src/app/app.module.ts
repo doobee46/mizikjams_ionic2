@@ -12,6 +12,7 @@ import { FrontPage } from '../pages/front/front';
 //import { ProfilePage } from '../pages/profile/profile';
 import { PlaylistPage } from '../pages/playlist/playlist';
 import { BackandService } from '../providers/backandService';
+import { AdMobPro } from '../providers/admobpro';
 import { SearchPage } from  '../pages/search/search';
 //import { ResetPasswordPage } from '../pages/resetpassword/resetpassword';
 import { VideodetailsPage } from'../pages/videodetails/videodetails';
@@ -68,6 +69,6 @@ const cloudSettings: CloudSettings = {
     VideodetailsPage,
     FrontPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage, BackandService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage, BackandService,AdMobPro]
 })
 export class AppModule {}

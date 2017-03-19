@@ -4,7 +4,7 @@ import { BackandService } from '../../providers/backandService'
 import { NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 import { FrontPage } from'../front/front';
-import { HomePage } from '../home/home';
+//import { HomePage } from '../home/home';
 
 @Component({
   templateUrl: 'signup.html',

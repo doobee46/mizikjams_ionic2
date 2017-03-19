@@ -7,13 +7,16 @@ import { LoadingController } from 'ionic-angular';
 import { DomSanitizer} from '@angular/platform-browser';
 import { MainPage } from '../main/main';
 import { BackandService } from '../../providers/backandService';
+import { AdMobPro } from '../../providers/admobpro';
 
 @Component({
   selector: 'page-videodetails',
-  templateUrl: 'videodetails.html'
+  templateUrl: 'videodetails.html',
+  providers: [AdMobPro]
 })
 
 export class VideodetailsPage {
+
   public items:any[] = [];
   public key;
   public url;
@@ -23,9 +26,10 @@ export class VideodetailsPage {
   public heart:any;
   public params:any;
 
+
   constructor(public navCtrl: NavController,private sanitizer: DomSanitizer,
    public navParams: NavParams,public loadingCtrl: LoadingController,public actionsheetCtrl: ActionSheetController,
-   public menuCtrl: MenuController,public backandService:BackandService,public platform: Platform,) {
+   public menuCtrl: MenuController,public backandService:BackandService,public platform: Platform,private adMobPro: AdMobPro) {
 
    this.menuCtrl.enable(true);
    this.key   = navParams.get('videokey');
@@ -39,6 +43,7 @@ export class VideodetailsPage {
    console.log(this.category_id)
    this.getVideos();*/
    this.getRelated();
+   
   }
 
   ionViewDidLoad() {
@@ -119,11 +124,30 @@ export class VideodetailsPage {
     actionSheet.present();
   }
 
+  showBanner(){
+    console.log('showBanner');
+    this.adMobPro.showBanner();
+  }
 
-  
+  removeBanner(){
+    console.log('removeBanner');
+    this.adMobPro.removeAds();
+  }
+
+
+  showInterstitial(){
+    console.log('showInterstitial');
+    this.adMobPro.showInterstitial();
+  }
+
+
 
 
 }
+  
+
+
+
 
 
 

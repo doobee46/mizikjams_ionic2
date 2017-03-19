@@ -13,6 +13,7 @@
 
   <div class="video-info">
     <ion-list>
+      <ion-item></ion-item>
       <ion-item>
         <h2>{{title}}</h2>
         <h3>{{band}}</h3>
@@ -43,6 +44,10 @@
       </ion-item>
     </ion-list>
    </ion-scroll>
+
+<button ion-button full (click)="showBanner()">Show Banner</button>
+<button ion-button full (click)="removeBanner()">Remove Banner</button>
+<button ion-button full (click)="showInterstitial()">Show Interstitial</button>
 
 </ion-content>
 <div class="floatingbtn">
