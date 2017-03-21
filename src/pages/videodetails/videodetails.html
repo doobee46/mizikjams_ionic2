@@ -13,24 +13,24 @@
 
   <div class="video-info">
     <ion-list>
-      <ion-item></ion-item>
       <ion-item>
         <h2>{{title}}</h2>
         <h3>{{band}}</h3>
         <h3>{{views}}</h3>
         <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
         <p></p>
-        <i class="fa fa-ellipsis-v fa-3x" aria-hidden="true" ion-button clear ion-text  color='dark' (click)="openMenu()" item-right></i>
+         <ion-icon ios="ios-more" md="md-more" ion-button clear ion-text  color='dark' (click)="openMenu()" item-right></ion-icon>
+        <!-- <i class="fa fa-ellipsis-v fa-3x" aria-hidden="true" ></i> -->
       </ion-item>
        
     </ion-list>
   </div>
 
    <ion-scroll class="related" scrollY="true" style="width: 100%; height: 100%;">
+   <ion-list-header>
+      Related Videos
+    </ion-list-header>
     <ion-list >
-      <ion-list-header>
-        Related Videos
-      </ion-list-header>
       <ion-item *ngFor="let item of items">
         <ion-avatar item-left>
           <img [src]="item.image_url">
@@ -45,9 +45,9 @@
     </ion-list>
    </ion-scroll>
 
-<button ion-button full (click)="showBanner()">Show Banner</button>
+<!-- <button ion-button full (click)="showBanner()">Show Banner</button>
 <button ion-button full (click)="removeBanner()">Remove Banner</button>
-<button ion-button full (click)="showInterstitial()">Show Interstitial</button>
+<button ion-button full (click)="showInterstitial()">Show Interstitial</button> -->
 
 </ion-content>
 <div class="floatingbtn">

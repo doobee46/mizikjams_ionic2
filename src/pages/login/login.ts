@@ -90,7 +90,8 @@ export class LoginPage {
             this.backandService.logError(err)
         },
         () => console.log('Finish Auth'));
-        
+    
+       
     }
 
 

@@ -23,11 +23,9 @@ export class MainPage {
   public  items:any[] = [];
   public  favorite: true;
   public  video;
-  public  deep:boolean = true;
-  public  view: number;
-  public  count: number;
-  public  heartcount:any;
-  public  id:string;
+  public  deep: true;
+  public  id:any;
+  public  likecount:number;
   private pageSize: number = 20;
   private pageNumber: number = 1;
   private canLoadMore:boolean = true;
@@ -42,7 +40,7 @@ export class MainPage {
     this.searchQuery = '';
     this.menuCtrl.enable(true);
     this.getVideos();
-    this.trackView(this.id);
+   
 
     this.backandService.on("items_updated")
             .subscribe(
@@ -96,6 +94,24 @@ export class MainPage {
     () => console.log('OK')
     );
    }
+
+
+
+
+/*   postLikeCount(id, likecount){
+      this.backandService.update("videos",id).subscribe(
+        data => {
+          console.log(data);
+
+        },
+        err => this.backandService.logError(err),
+       () => console.log('OK')
+     );
+   }*/
+
+
+
+
 
    doRefresh(refresher) {
     console.log('async operation');
@@ -164,8 +180,6 @@ export class MainPage {
         category:category_id,
         heart:heart
     }).then(()=>{
-       this.trackView(id);
-    }).then(()=>{
        this.showBanner();
     });
     
@@ -188,42 +202,6 @@ export class MainPage {
     console.log('showInterstitial');
     this.adMobPro.showInterstitial();
   }
-
-
-  trackView(id){
-    this.backandService.create('views', { video: this.video}).subscribe(
-            data => {
-                // add to beginning of array
-               // this.videos.unshift({ id: null, video: this.video });
-                //console.log(this.items);
-                this.video = id;               
-            },
-            err => this.backandService.logError(err),
-            () => console.log('OK')
-        );
-    }
-
-
-
- public like(id){
-    this.backandService.update('videos', id,  {hearts: this.heartcount}).subscribe(
-        data => {
-            // add to beginning of array
-            //this.items.unshift({ id: null, video: this.video });
-            //console.log(this.items);
-            //   this.heartcount = "";
-            console.log(this.heartcount)
-        },
-        err => this.backandService.logError(err),
-        () => console.log('OK')
-      );
-    let toast = this.toastCtrl.create({ 
-    message: `Video Added to your favorites!`,
-    duration: 2000
-   });
-    toast.present();
-  }
-
 
 
    public filterItems(searchbar) {

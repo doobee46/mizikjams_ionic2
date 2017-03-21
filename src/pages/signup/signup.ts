@@ -50,13 +50,13 @@ export class SignupPage {
     $obs.subscribe(                
         data => {
             console.log('Sign up succeeded with:' + provider);
-            this.navCtrl.setRoot(FrontPage);          
+            this.navCtrl.setRoot(FrontPage);           
         },
         err => {
             this.backandService.logError(err)
         },
         () => console.log('Finish Auth'));
-        
+       
     }
 
  
