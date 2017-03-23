@@ -16,6 +16,7 @@ import { AdMobPro } from '../providers/admobpro';
 import { SearchPage } from  '../pages/search/search';
 //import { ResetPasswordPage } from '../pages/resetpassword/resetpassword';
 import { VideodetailsPage } from'../pages/videodetails/videodetails';
+import { CategoryPage }from '../pages/category/category';
 
  
 const cloudSettings: CloudSettings = {
@@ -48,7 +49,8 @@ const cloudSettings: CloudSettings = {
     SearchPage,
     //ResetPasswordPage,
     VideodetailsPage,
-    FrontPage
+    FrontPage,
+    CategoryPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -67,7 +69,8 @@ const cloudSettings: CloudSettings = {
     SearchPage,
     //ResetPasswordPage,
     VideodetailsPage,
-    FrontPage
+    FrontPage,
+    CategoryPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage, BackandService,AdMobPro]
 })

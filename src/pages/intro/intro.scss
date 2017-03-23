@@ -54,6 +54,7 @@
    }
    button{
     @include slidetext;
+    font-size:12px !important;
     border-color: #fff !important;
    }
 }

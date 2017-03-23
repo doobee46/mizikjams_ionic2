@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { MainPage }from '../main/main';
 import { MenuController } from 'ionic-angular';
 import { VideodetailsPage } from '../videodetails/videodetails';
+import { CategoryPage }from '../category/category';
 import { BackandService } from '../../providers/backandService';
 
 @Component({
@@ -84,5 +85,14 @@ export class FrontPage {
     
     console.log(category_id);
   }
+
+  selectCategory(id, name){
+    this.navCtrl.push(CategoryPage,{
+      id :id,
+      name: name
+    });
+  }
+
+
 
 }

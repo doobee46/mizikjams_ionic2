@@ -56,7 +56,7 @@ export class VideodetailsPage {
       // console.log(this.key)
   }
 
- getRelated() {
+ public getRelated() {
    let loader = this.loadingCtrl.create({
         //content: '...',
       })

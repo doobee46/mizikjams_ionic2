@@ -3,7 +3,7 @@
    <ion-title><img src="assets/img/logo.png"/></ion-title>
    <ion-buttons start>
       <button ion-button icon-only>
-         <ion-icon ios="ios-paper" md="md-paper"></ion-icon>
+         <ion-icon name="timer" (click)="goToRecents();"></ion-icon>
       </button>
    </ion-buttons >
    <ion-buttons end>
@@ -18,7 +18,7 @@
     <img src="assets/img/bg_overlay2.png"/>
     <div class="topinfo">
       <h3>Browse Library</h3>
-      <button ion-button outline small  color="light" round (click)="browseVideos();">
+      <button ion-button outline small color="light" round (click)="browseVideos();">
         GO
       </button>
     </div>
@@ -67,7 +67,7 @@
      <ion-slides pager="true" >
         <ion-slide *ngFor="let item of items" >
           <img src="assets/img/{{item.name}}.png"/>
-          <button ion-button outline small class="categorybtn" color="light" >
+          <button ion-button outline small class="categorybtn" color="light" (click)="selectCategory(item.id,item.name);">
            {{item.name}}
           </button>
         </ion-slide>
