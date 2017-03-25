@@ -86,10 +86,11 @@ export class FrontPage {
     console.log(category_id);
   }
 
-  selectCategory(id, name){
+  selectCategory(id, name, description){
     this.navCtrl.push(CategoryPage,{
       id :id,
-      name: name
+      name: name,
+      description:description
     });
   }
 

@@ -1,33 +1,80 @@
 page-category {
   .front-content{
       background-color:#2E294E !important;
-    }
-  .topbox{
-      width: 100%;
-      height: 185px;
-      //border-bottom:1px solid #e13838;
-     @include bgcolor;
-     .topinfo{
-        width: 280px;
-        height: auto;
-/*      border: 1px solid #fff;*/
-        position: relative;
-        top: -90px;
-        margin: 0 auto;
-        h3{
-            font-size:23px;
-            font-weight: 700;
-            text-align: center;
-            text-transform:uppercase;
-            letter-spacing: 1px;
-            color:#fff;
-        }
-        button{
-            margin: 0 auto;
+       .topbox{
+        width: 100%;
+        height: 185px;
+        //border-bottom:1px solid #e13838;
+        @include bgcolor;
+        .topinfo{
+            width: 280px;
+            height: auto;
+    /*      border: 1px solid #fff;*/
             position: relative;
-            left: 35%;
-        }
-     }
-  }
+            top: -90px;
+            margin: 0 auto;
+            h3.genres{
+                font-size:23px;
+                font-weight: 400;
+                text-align:left;
+                text-transform:uppercase;
+                letter-spacing: 2px;
+                color:#fff;
+                position: relative;
+                top: -75px;
+                left: -25px;
+                padding-bottom:5px;
+            } 
+            h5{
+                font-size:14px;
+                font-weight: 300;
+                text-align:left;
+                text-transform:capitalize;
+                letter-spacing: 2px;
+                color:#fff;
+                position: relative;
+                top: -95px;
+                left: -25px;
+            
+            }
 
+            .hr-separator{
+                width: 80px;
+                height:3px;
+                border-bottom:1px solid rgba(255,255,255, 0.5)
+            }
+
+
+            button{
+                margin: 0 auto;
+                position: relative;
+                left: 35%;
+            }
+        }
+    }
+    .genres-list{
+        /*display: inline-table;*/
+      .genres-item{
+         .cell{
+            display:inline-table;
+            float: left;
+            width:123px;
+            margin-left:10px;
+            margin-bottom:8px;
+            .masking-thumb{
+               width:123px;
+               height:110px;
+               @include mask;
+               position:absolute;
+               //top:0;
+               background: linear-gradient(transparent, #2E294E) left repeat;
+               z-index: 100;
+
+            }              
+        }
+      }       
+   }
 }
+ 
+}
+
