@@ -25,7 +25,7 @@ export class MediaPlayerService {
       "mute": false,
       "useAudioTag": true,
       "file": media.Location,
-      "skin": "bekle",
+      "skin": "five",
       "stretching": "exactfit",
       "width": "100%",
       "volume": 50,

@@ -27,6 +27,8 @@ export class VideodetailsPage {
   public category_id:string;
   public heart:any;
   public params:any;
+  public media_url="http://content.jwplatform.com/videos/"
+  public template_id ="-VlTpug2y"
 
 
   constructor(public navCtrl: NavController,private sanitizer: DomSanitizer,
@@ -51,10 +53,10 @@ export class VideodetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VideodetailsPage');
-    this.mplayer.loadMedia({"Location":"http://content.jwplatform.com/videos/"+this.key+"-VlTpug2y.mp4",
+    this.mplayer.loadMedia({"Location":this.media_url+this.key+this.template_id+".mp4",
                              "Title":this.title,
                              "Id":this.key,
-                             "Image":"http://content.jwplatform.com/thumbs/"+this.key+"-320.jpg"
+                             "Image":this.media_url+this.key+"-640.jpg"
                               }
                              ,true);
   }
