@@ -126,100 +126,7 @@ $refresher-icon-color: #fff;
 
 
 
-
-
-// Media query iphone 5 -5s
-//---------------------------------------------------
-@media only screen
-  and (min-device-width: 320px) 
-  and (max-device-width: 568px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) {
-  
-    .genres-list{
-      .genres-item{
-         .cell{
-            display:inline-table;
-            float: left;
-            width:100px;
-            height:85px;
-            margin-left:3px;
-            margin-bottom:-60px;
-            .masking-thumb{
-               width:100px;
-               height:85px;
-               @include mask;
-               position:absolute;
-               background: linear-gradient(transparent, #2E294E) left repeat;
-               z-index: 100;
-
-            }
-            img.thumb{
-                width:100px !important;
-                height:85px !important;
-            }
-            .playsm{
-                width:31px;
-                height:31px;
-                position: relative;
-                margin: 0 auto;
-                z-index: 1000;
-                top: -75px;
-            } 
-             h3{
-                font-size:11px;
-                letter-spacing:2px;
-                line-height:120%;
-                font-weight:lighter;
-                color:rgb(255,255,255);
-                text-align:center; 
-                margin-left:3px;
-                text-transform: uppercase;
-                position: relative;
-                top: -75px;
-                width:100px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                z-index: 1000; 
-            }           
-        }
-      }       
-   }
-
-    page-front .topvideos ion-slides ion-slide {
-        width: 110px !important;
-        margin-right: 10px;
-        margin-bottom: 15px !important;
-    }
-
-    .floatingbtn {
-        left: 250px ;
-    }
-
-    .skip-btn {
-        position: relative;
-        top: 100px;
-    }
-
-    page-category .front-content .topbox .topinfo h3.genres {
-        font-size: 20px;
-        position: relative;
-        top: -50px;
-        left: -10px;
-        padding-bottom: 5px;
-    }
-
-    page-category .front-content .topbox .topinfo h5 {
-        position: relative;
-        top: -65px;
-        left: -10px;
-    }
-}
-
- 
-
-// Media query iphone 6
+/*// Media query iphone 6
 //---------------------------------------------------
 @media only screen 
   and (min-device-width: 375px) 
@@ -361,10 +268,103 @@ $refresher-icon-color: #fff;
       top: -95px;
       left: -25px;
     }
+}*/
+
+// Media query iphone 5 -5s
+//---------------------------------------------------
+@media only screen
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  
+    .genres-list{
+      .genres-item{
+         .cell{
+            display:inline-table;
+            float: left;
+            width:100px;
+            height:85px;
+            margin-left:3px ;
+            margin-bottom:-60px;
+            .masking-thumb{
+               width:100px;
+               height:85px;
+               @include mask;
+               position:absolute;
+               background: linear-gradient(transparent, #2E294E) left repeat;
+               z-index: 100;
+
+            }
+            img.thumb{
+                width:100px ;
+                height:85px;
+            }
+            .playsm{
+                width:31px;
+                height:31px;
+                position: relative;
+                margin: 0 auto;
+                z-index: 1000;
+                top: -75px;
+            } 
+             h3{
+                font-size:11px;
+                letter-spacing:2px;
+                line-height:120%;
+                font-weight:lighter;
+                color:rgb(255,255,255);
+                text-align:center; 
+                margin-left:3px;
+                text-transform: uppercase;
+                position: relative;
+                top: -75px;
+                width:100px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                z-index: 1000; 
+            }           
+        }
+      }       
+   }
+
+    page-front .topvideos ion-slides ion-slide {
+        width: 110px !important;
+        margin-right: 10px;
+        margin-bottom: 15px !important;
+    }
+
+    .floatingbtn {
+        left: 250px ;
+    }
+
+    .skip-btn {
+        position: relative;
+        top: 100px;
+    }
+
+    page-category .front-content .topbox .topinfo h3.genres {
+        font-size: 20px ;
+        position: relative;
+        top: -50px ;
+        left: -10px ;
+        padding-bottom: 5px;
+    }
+
+    page-category .front-content .topbox .topinfo h5 {
+        position: relative;
+        top: -65px ;
+        left: -10px;
+    }
 }
 
+ 
 
-// Media query Android(
+
+
+
+/*// Media query Android(nexus)
 //---------------------------------------------------
 @media only screen 
   and (min-device-width: 412px) 
@@ -434,3 +434,146 @@ $refresher-icon-color: #fff;
       left: -25px;
     }
 }
+
+// Media query Android(samsung galaxy s5)
+//---------------------------------------------------
+
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: portrait) {
+    .genres-list{
+      .genres-item{
+         .cell{
+            display:inline-table;
+            float: left;
+            width:106px;
+            height:110px;
+            margin-left:10px;
+            margin-bottom:-60px;
+            .masking-thumb{
+               width:106px;
+               height:110px;
+               @include mask;
+               position:absolute;
+               background: linear-gradient(transparent, #2E294E) left repeat;
+               z-index: 100;
+
+            }
+            img.thumb{
+                width:106px !important;
+                height:110px !important;
+            }
+            .playsm{
+                width:31px;
+                height:31px;
+                position: relative;
+                margin: 0 auto;
+                z-index: 1000;
+                top: -75px;
+            } 
+             h3{
+                font-size:11px;
+                letter-spacing:2px;
+                line-height:120%;
+                font-weight:lighter;
+                color:rgb(255,255,255);
+                text-align:center; 
+                margin-left:3px;
+                text-transform: uppercase;
+                position: relative;
+                top: -75px;
+                width:100px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                z-index: 1000; 
+            }           
+        }
+      }       
+   }
+
+   page-category .front-content .topbox .topinfo h3.genres {
+      position: relative;
+      top: -75px;
+      left: -25px;
+      padding-bottom:5px;
+   }
+   page-category .front-content .topbox .topinfo h5 {
+      position: relative;
+      top: -95px;
+      left: -25px;
+    }
+}
+
+// Media query Android
+//---------------------------------------------------
+@media only screen 
+   and (max-width : 720px) 
+   and (max-height : 1280px)
+   and (orientation: portrait) {
+   .genres-list{
+      .genres-item{
+         .cell{
+            display:inline-table;
+            float: left;
+            width:113px;
+            height:110px;
+            margin-left:10px;
+            margin-bottom:-60px;
+            .masking-thumb{
+               width:113px;
+               height:110px;
+               @include mask;
+               position:absolute;
+               background: linear-gradient(transparent, #2E294E) left repeat;
+               z-index: 100;
+
+            }
+            img.thumb{
+                width:113px !important;
+                height:110px !important;
+            }
+            .playsm{
+                width:31px;
+                height:31px;
+                position: relative;
+                margin: 0 auto;
+                z-index: 1000;
+                top: -75px;
+            } 
+             h3{
+                font-size:11px;
+                letter-spacing:2px;
+                line-height:120%;
+                font-weight:lighter;
+                color:rgb(255,255,255);
+                text-align:center; 
+                margin-left:3px;
+                text-transform: uppercase;
+                position: relative;
+                top: -75px;
+                width:100px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                z-index: 1000; 
+            }           
+        }
+      }       
+   }
+
+   page-category .front-content .topbox .topinfo h3.genres {
+      position: relative;
+      top: -75px;
+      left: -25px;
+      padding-bottom:5px;
+   }
+   page-category .front-content .topbox .topinfo h5 {
+      position: relative;
+      top: -95px;
+      left: -25px;
+    }
+}
+*/
