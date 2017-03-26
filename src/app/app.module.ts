@@ -16,6 +16,7 @@ import { AdMobPro } from '../providers/admobpro';
 import { SearchPage } from  '../pages/search/search';
 //import { ResetPasswordPage } from '../pages/resetpassword/resetpassword';
 import { VideodetailsPage } from'../pages/videodetails/videodetails';
+import { MediaPlayerService } from '../providers/MediaPlayerService';
 import { CategoryPage }from '../pages/category/category';
 
  
@@ -72,6 +73,6 @@ const cloudSettings: CloudSettings = {
     FrontPage,
     CategoryPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage, BackandService,AdMobPro]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage, BackandService,AdMobPro,MediaPlayerService]
 })
 export class AppModule {}

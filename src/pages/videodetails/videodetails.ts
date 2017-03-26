@@ -7,12 +7,14 @@ import { LoadingController } from 'ionic-angular';
 import { DomSanitizer} from '@angular/platform-browser';
 import { MainPage } from '../main/main';
 import { BackandService } from '../../providers/backandService';
+import { MediaPlayerService } from '../../providers/MediaPlayerService';
+
 import { AdMobPro } from '../../providers/admobpro';
 
 @Component({
   selector: 'page-videodetails',
   templateUrl: 'videodetails.html',
-  providers: [AdMobPro]
+  providers: [AdMobPro,MediaPlayerService]
 })
 
 export class VideodetailsPage {
@@ -29,7 +31,8 @@ export class VideodetailsPage {
 
   constructor(public navCtrl: NavController,private sanitizer: DomSanitizer,
    public navParams: NavParams,public loadingCtrl: LoadingController,public actionsheetCtrl: ActionSheetController,
-   public menuCtrl: MenuController,public backandService:BackandService,public platform: Platform,private adMobPro: AdMobPro) {
+   public menuCtrl: MenuController,public backandService:BackandService,public platform: Platform,
+   private adMobPro: AdMobPro, public mplayer: MediaPlayerService) {
 
    this.menuCtrl.enable(true);
    this.key   = navParams.get('videokey');
@@ -48,13 +51,19 @@ export class VideodetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VideodetailsPage');
+    this.mplayer.loadMedia({"Location":"http://content.jwplatform.com/videos/"+this.key+"-VlTpug2y.mp4",
+                             "Title":this.title,
+                             "Id":this.key,
+                             "Image":"http://content.jwplatform.com/thumbs/"+this.key+"-320.jpg"
+                              }
+                             ,true);
   }
 
-  ngOnInit() {
+ /* ngOnInit() {
       this.key = this.navParams.get('videokey');
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl('http://content.jwplatform.com/players/'+this.key+'-nKEFTcZg.html');
       // console.log(this.key)
-  }
+  }*/
 
  public getRelated() {
    let loader = this.loadingCtrl.create({
