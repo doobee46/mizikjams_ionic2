@@ -20,10 +20,10 @@ page-category {
                 text-transform:uppercase;
                 letter-spacing: 2px;
                 color:#fff;
-                position: relative;
+                /*position: relative;
                 top: -75px;
                 left: -25px;
-                padding-bottom:5px;
+                padding-bottom:5px;*/
             } 
             h5{
                 font-size:14px;
@@ -32,10 +32,10 @@ page-category {
                 text-transform:capitalize;
                 letter-spacing: 2px;
                 color:#fff;
-                position: relative;
+               /* position: relative;
                 top: -95px;
                 left: -25px;
-            
+            */
             }
 
             .hr-separator{
@@ -52,28 +52,56 @@ page-category {
             }
         }
     }
-    .genres-list{
-        /*display: inline-table;*/
+  /*  .genres-list{
       .genres-item{
          .cell{
             display:inline-table;
             float: left;
             width:123px;
+            height:110px;
             margin-left:10px;
-            margin-bottom:8px;
+            margin-bottom:-60px;
             .masking-thumb{
                width:123px;
                height:110px;
                @include mask;
                position:absolute;
-               //top:0;
                background: linear-gradient(transparent, #2E294E) left repeat;
                z-index: 100;
 
-            }              
+            }
+            img.thumb{
+                width:123px;
+                height:110px;
+            }
+            .playsm{
+                width:31px;
+                height:31px;
+                position: relative;
+                margin: 0 auto;
+                z-index: 1000;
+                top: -75px;
+            } 
+             h3{
+                font-size:11px;
+                letter-spacing:2px;
+                line-height:120%;
+                font-weight:lighter;
+                color:rgb(255,255,255);
+                text-align:center; 
+                margin-left:3px;
+                text-transform: uppercase;
+                position: relative;
+                top: -75px;
+                width:100px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                z-index: 1000; 
+            }           
         }
       }       
-   }
+   }*/
 }
  
 }

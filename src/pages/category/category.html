@@ -12,35 +12,16 @@
     </div>
     <div class="hr-separator"></div>
 </div>
-<div class="genres-list">
+<div class="genres-list" >
   <div class="genres-item" *ngFor="let item of items" >
      <div class="cell">
-        <div class="masking-thumb"></div>
-        <img src="http://placehold.it/123x110">
-        <!--<img [src]="item.thumb_url" class="thumb"/>
-        <div class="playsm">
+       <div class="masking-thumb"></div>
+           <img [src]="item.thumb_url" class="thumb"/>
+         <div class="playsm">
             <img  src="assets/img/play_sm.png" (click)="playvideo(item.id, item.key, item.title, item.band,item.category_id);"/>
-          </div>
-        <h3>{{item.title}}</h3>-->
+         </div>
+        <h3>{{item.title}}</h3>
      </div>
   </div>
 </div>
-
-<!--<div class="genres-list">
-   <div class="genres-item" *ngFor="let item of items" >
-     <ion-grid>
-        <ion-row>
-          <ion-col col-12>
-            <img src="assets/img/kai_small.png"/>
-            <div class="playsm">
-              <img  src="assets/img/play_sm.png" (click)="playVideo();"/>
-            </div>
-            <h3>KAI-Malade</h3>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-   </div>
-</div>-->
- 
-
 </ion-content>
