@@ -19,8 +19,8 @@ export class MediaPlayerService {
     var cfg = {
       title: media.Title,
       mediaid: media.Id,
-      "preload": "auto",
-      "autostart": true,
+      "preload": "none",
+      "autostart":false,
       "controls": true,
       "mute": false,
       "useAudioTag": true,
@@ -39,7 +39,6 @@ export class MediaPlayerService {
       }
     };
 
-
     return Promise.resolve(
       jwplayer("myMediaDiv").setup(cfg))
       .then(
@@ -47,7 +46,7 @@ export class MediaPlayerService {
           setTimeout(() => {
             return playerInstance.play();
           }, 500);
-        }    }
+        } }
       );
   }
 

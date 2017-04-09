@@ -51,6 +51,22 @@ export class FrontPage {
     this.navCtrl.push(MainPage)
   }
 
+  public postViews(id) {
+      this.backandService.create('views',{ views: id }).subscribe(
+              data => {
+                 /*   add to beginning of array
+                  this.items.unshift({ id: null, name: this.name, description: this.description });
+                  console.log(this.items);
+                  this.views = id;
+                  console.log(this.views);
+                  //this.description = '';*/
+              },
+              err => this.backandService.logError(err),
+              () => console.log('OK')
+          );
+  }
+
+
  getCategory(){
    this.backandService.getList('categories').subscribe(
       data => {
@@ -75,6 +91,7 @@ export class FrontPage {
 
      
    public playvideo(id,key,title,band,category_id){
+    this.postViews(id);
     this.navCtrl.push(VideodetailsPage,{
         id :id,
         videokey: key,

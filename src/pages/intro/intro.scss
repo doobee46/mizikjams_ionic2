@@ -7,45 +7,50 @@
 }
 
 .first{
-    /*background-color:#FD1625*/;
-    @include bgcolor;
+    background-color:#2E294E;
+    //@include bgcolor;
     img{
-       @include imgsize;
+      // @include imgsize;
     }
     h1{
       @include slidetext;
     }
      p{
         color: #fff;
-        font-size: 16px;
+        font-size: 20px;
         letter-spacing: 2px;
-        text-align: justify;
-        width: 300px;
+        text-align: center;
+        width: 320px;
         margin: 0 auto;
-        position: relative;
-        top: 15px;
-        line-height: 30px;
-        font-weight:lighter;
+        font-weight: lighter;
+        padding-bottom: 25px;
     }
 }
 
 .second{
-    /*background-color:#FD1625 #0197F6*/;
-    @include bgcolor;
+    background-color:#2E294E;/*#FD1625 #0197F6*/;
+    //@include bgcolor;
     img{
-        @include imgsize;
+        //@include imgsize;
     }
     h1{
      @include slidetext;
     }
     p{
-     @include slidetext;
+        color: #fff;
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-align: center;
+        width: 320px;
+        margin: 0 auto;
+        font-weight: lighter;
+        padding-bottom: 25px;
     }
 }
 
 .third{
-    /*background-color:#FD1625 #02182B*/;
-    @include bgcolor;
+    background-color:#2E294E;/*#FD1625 #0197F6*/;
+    //@include bgcolor;
     img{
         @include imgsize;
     }
@@ -71,7 +76,8 @@
 }
 
 .flb {
-  background-color:#2E294E;
+  /*background-color:#2E294E;*/
+  @include bgcolor;
   height:100%;
   width:100%;
   animation: pulse 1s linear forwards;

@@ -22,10 +22,10 @@ export class MainPage {
  
   public  items:any[] = [];
   public  favorite: true;
-  public  video;
+  public  views:any;
   public  deep: true;
-  public  id:any;
-  public  likecount:number;
+  public  id:string;
+  public  heart:number;
   private pageSize: number = 20;
   private pageNumber: number = 1;
   private canLoadMore:boolean = true;
@@ -96,18 +96,30 @@ export class MainPage {
    }
 
 
+  public postViews(id) {
+        this.backandService.create('views',{ views: id }).subscribe(
+                data => {
+                   /*  add to beginning of array
+                    this.items.unshift({ id: null, name: this.name, description: this.description });
+                    console.log(this.items);*/
+                    this.views = id;
+                    console.log(this.views);
+                    //this.description = '';
+                },
+                err => this.backandService.logError(err),
+                () => console.log('OK')
+            );
+    }
 
-
-/*   postLikeCount(id, likecount){
-      this.backandService.update("videos",id).subscribe(
-        data => {
-          console.log(data);
-
-        },
-        err => this.backandService.logError(err),
-       () => console.log('OK')
-     );
-   }*/
+    public postLike(id, heart) {
+        this.backandService.update('videos',id,{ hearts: 2  }).subscribe(
+                data => {
+                 
+                },
+                err => this.backandService.logError(err),
+                () => console.log('OK')
+            );
+    }
 
 
 
@@ -173,6 +185,7 @@ export class MainPage {
 
    
   public playvideo(id,key,title,band,category_id,heart){
+    this.postViews(id);
     this.navCtrl.push(VideodetailsPage,{
         videokey: key,
         title: title,
@@ -180,10 +193,10 @@ export class MainPage {
         category:category_id,
         heart:heart
     }).then(()=>{
-       this.showBanner();
+      
+       console.log(id);
     });
-    
-    console.log(id);
+
   }
 
 

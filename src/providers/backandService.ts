@@ -699,6 +699,15 @@ export class BackandService {
             .map(res => res.json());
     }
 
+    public getViews(id){
+        let encodedUrl =encodeURIComponent(JSON.stringify({"id":id}));
+        return this.http.get(this.api_url + '/1/query/data/viewCount?parameters='+encodedUrl,{
+                headers: this.authHeader  
+        })
+            .retry(3)
+            .map(res => res.json());
+    }
+
     private setAuthenticationState(): boolean {
         let storedToken = localStorage.getItem('auth_token');
         if (storedToken){

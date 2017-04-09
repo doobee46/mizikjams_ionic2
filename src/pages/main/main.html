@@ -45,7 +45,7 @@
             <ion-col width-60 class="col1">
               <ul>
                 <li>
-                  <button ion-button color="light" clear outline icon-only (click)="postLikeCount(item.id);">
+                  <button ion-button color="light" clear outline icon-only (click)="postLike(item.id,item.hearts);">
                     <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
                   </button>
                 </li>
@@ -61,7 +61,7 @@
                 <li>
                   <button ion-button color="light" clear icon-only class="viewcount">
                     <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
-                    {{item.category_id}} views             
+                    {{item. views             
                   </button>
                 </li>
                </ul>
