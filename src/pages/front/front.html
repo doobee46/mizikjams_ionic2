@@ -27,28 +27,14 @@
   <div class="topvideos">
     <h3>Most Viewed videos</h3>
      <ion-slides pager="true" >
-        <ion-slide>
-          <img src="assets/img/kai_small.png"/>
+        <ion-slide *ngFor="let popular of popular ">
+          <div class="masking-thumb"></div>
+          <img [src]=popular.thumb_url/>
           <div class="playsm">
-            <img  src="assets/img/play_sm.png" (click)="playVideo();"/>
+            <img  src="assets/img/play_sm.png" (click)="playvideo(popular.id,popular.key, popular.title, popular.band, popular.category_id,popular.viewcount);"/>
           </div>
-          <h3>KAI-Malade</h3>
+          <h3>{{popular.title}}</h3>
         </ion-slide>
-        <ion-slide>
-          <img src="assets/img/dat7_sm.png"/>
-          <div class="playsm">
-            <img  src="assets/img/play_sm.png" (click)="playVideo();"/>
-          </div>
-          <h3>Dat7-Se konsa</h3>
-        </ion-slide>
-        <ion-slide>
-          <img src="assets/img/kai_small.png"/>
-          <div class="playsm">
-            <img  src="assets/img/play_sm.png" (click)="playVideo();"/>
-          </div>
-          <h3>KAI-Malade</h3>
-        </ion-slide>
-           
     </ion-slides>
   </div>
   <div class="topvideos">
@@ -56,9 +42,9 @@
      <ion-slides pager="true" >
         <ion-slide *ngFor="let element of elements ">
           <div class="masking-thumb"></div>
-             <img [src]="element.thumb_url" class="thumb"/>
+          <img [src]="element.thumb_url" class="thumb"/>
           <div class="playsm">
-            <img  src="assets/img/play_sm.png" (click)="playvideo(element.id, element.key, element.title, element.band, element.category_id);"/>
+            <img  src="assets/img/play_sm.png" (click)="playvideo(element.id, element.key, element.title, element.band, element.category_id, element.viewcount);"/>
           </div>
               <h3>{{element.title}}</h3>
         </ion-slide>

@@ -41,6 +41,7 @@ import {Http, Headers, URLSearchParams} from '@angular/http'
 import {Injectable} from '@angular/core';
 import {Facebook} from 'ionic-native';
 import * as io from 'socket.io-client';
+import { retry } from "rxjs/operator/retry";
 
 @Injectable()
 export class BackandService {
@@ -479,8 +480,8 @@ export class BackandService {
             {
                 headers: this.authHeader
             })
-            .retry(3)
-            .map(res => res.json());           
+            .retry(3).do(data=>console.log(data))
+            .map(res => res.json());         
     }
 
 
@@ -707,6 +708,15 @@ export class BackandService {
             .retry(3)
             .map(res => res.json());
     }
+
+      public getPopular(){
+        return this.http.get(this.api_url + '/1/query/data/mostViewed?parameters=',{
+                headers: this.authHeader  
+        })
+            .retry(3)
+            .map(res => res.json());
+    }
+
 
     private setAuthenticationState(): boolean {
         let storedToken = localStorage.getItem('auth_token');

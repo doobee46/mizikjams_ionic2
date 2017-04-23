@@ -18,12 +18,14 @@ export class FrontPage {
   public title;
   public band;
   public category_id:string;
+  public popular:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl: MenuController,
   public backandService:BackandService) {
    this.menuCtrl.enable(true);
    this.getCategory();
    this.getnewReleases();
+   this.mostViewed();
  
 
     this.backandService.on("items_updated")
@@ -44,7 +46,7 @@ export class FrontPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FrontPage');
-      
+ 
   }
   
   public browseVideos(){
@@ -89,15 +91,26 @@ export class FrontPage {
     );
   }
 
+public mostViewed(){
+     this.backandService.getPopular().subscribe(
+       data =>{
+          this.popular = data;
+          console.log(data);     
+       },
+       err => this.backandService.logError(err),
+       () => console.log('OK')
+     );
+   }
      
-   public playvideo(id,key,title,band,category_id){
+   public playvideo(id,key,title,band,category_id,viewcount){
     this.postViews(id);
     this.navCtrl.push(VideodetailsPage,{
         id :id,
         videokey: key,
         title: title,
         band: band,
-        category:category_id
+        category:category_id,
+        viewcount:viewcount
     });
     
     console.log(category_id);

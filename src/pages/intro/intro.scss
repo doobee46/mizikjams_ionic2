@@ -1,5 +1,16 @@
 
 
+@mixin paragraph{
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 320px;
+  margin: 0 auto;
+  font-weight: lighter;
+  padding-bottom: 25px;
+}
+
 @mixin slidetext{
   color:#fff;
   font-size:18px;
@@ -16,14 +27,7 @@
       @include slidetext;
     }
      p{
-        color: #fff;
-        font-size: 20px;
-        letter-spacing: 2px;
-        text-align: center;
-        width: 320px;
-        margin: 0 auto;
-        font-weight: lighter;
-        padding-bottom: 25px;
+      @include paragraph;
     }
 }
 
@@ -37,14 +41,7 @@
      @include slidetext;
     }
     p{
-        color: #fff;
-        font-size: 20px;
-        letter-spacing: 2px;
-        text-align: center;
-        width: 320px;
-        margin: 0 auto;
-        font-weight: lighter;
-        padding-bottom: 25px;
+      @include paragraph; 
     }
 }
 

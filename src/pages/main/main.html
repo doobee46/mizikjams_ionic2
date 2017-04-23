@@ -45,7 +45,7 @@
             <ion-col width-60 class="col1">
               <ul>
                 <li>
-                  <button ion-button color="light" clear outline icon-only (click)="postLike(item.id,item.hearts);">
+                  <button ion-button color="light" clear outline icon-only (click)="postLike(item.id, item.key, item.title, item.band, item.category_id);">
                     <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
                   </button>
                 </li>
@@ -57,11 +57,11 @@
               </ul> 
             </ion-col>
             <ion-col width-40 class="col2">
-              <ul class="view">
+              <ul class="view" >
                 <li>
                   <button ion-button color="light" clear icon-only class="viewcount">
                     <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
-                    {{item. views             
+                   {{item.viewcount}} views          
                   </button>
                 </li>
                </ul>

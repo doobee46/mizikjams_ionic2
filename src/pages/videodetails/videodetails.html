@@ -16,10 +16,9 @@
       <ion-item>
         <h2>{{title}}</h2>
         <h3>{{band}}</h3>
-        <h3>{{views}}</h3>
-        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+        <h3>{{viewcount}} views</h3>
         <p></p>
-         <ion-icon ios="ios-more" md="md-more" ion-button clear ion-text  color='dark' (click)="openMenu()" item-right></ion-icon>
+         <i class="fa fa-ellipsis-v fa-5x " aria-hidden="true" ion-button clear  ion-text color='dark' (click)="openMenu(item.id)"  item-right></i>
         <!-- <i class="fa fa-ellipsis-v fa-3x" aria-hidden="true" ></i> -->
       </ion-item>
        
@@ -38,7 +37,7 @@
         <h2>{{item.band}}</h2>
         <p>{{item.title}}</p>
         {{item.heart}}<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-        <i class="fa fa-ellipsis-v fa-3x " aria-hidden="true" ion-button clear  ion-text color='dark' (click)="openMenu()"  item-right></i>
+        <i class="fa fa-ellipsis-v fa-3x " aria-hidden="true" ion-button clear  ion-text color='dark' (click)="openMenu(item.id)"  item-right></i>
         <!--<ion-icon class="sharebtn"name="ios-share-alt-outline" item-right></ion-icon>
         <ion-icon name="add" item-right></ion-icon>-->
       </ion-item>

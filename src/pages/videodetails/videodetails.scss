@@ -9,11 +9,19 @@ page-videodetails {
 
 .video-info{
     margin-top:5px;
-    ion-icon.sharebtn{
-       position:relative;
-       left:-20px;
+    ion-list{
+      ion-item{
+        h3{
+          font-size:15px;
+          letter-spacing:1px;
+          color:#000;
+          font-weight:lighter;
+          position:relative;
+          top:0;
+          text-transform:capitalize;
+      }
     }
-    
+  }
 }
 
 ion-scroll.related{
@@ -28,8 +36,8 @@ ion-scroll.related{
         }
     }
       ion-avatar img{
-        width: 65px;
-        height:45px;
+        width:130px;
+        height:90px;
         border-radius: 0px !important;
       }
     ion-label{

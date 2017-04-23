@@ -18,9 +18,9 @@
        <div class="masking-thumb"></div>
            <img [src]="item.thumb_url" class="thumb"/>
          <div class="playsm">
-            <img  src="assets/img/play_sm.png" (click)="playvideo(item.id, item.key, item.title, item.band,item.category_id);"/>
+            <img  src="assets/img/play_sm.png" (click)="playvideo(item.id, item.key, item.title, item.band,item.category_id,item.viewcount);"/>
          </div>
-        <h3>{{item.title}}</h3>
+        <h3>{{item.band}}</h3>
      </div>
   </div>
 </div>

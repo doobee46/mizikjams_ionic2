@@ -95,6 +95,7 @@ export class MyApp {
     });
     prompt.present();
  }
+
   
   openMain(){
     this.nav.setRoot(MainPage);

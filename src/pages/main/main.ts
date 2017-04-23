@@ -19,13 +19,17 @@ import 'rxjs/add/operator/map';
 })
 
 export class MainPage {
+    viewcount: any;
  
   public  items:any[] = [];
   public  favorite: true;
-  public  views:any;
-  public  deep: true;
+  public  deep = true;
+  public  views:any ="";
+  public  relatedOjects: true;
   public  id:string;
-  public  heart:number;
+  public  heart:any;
+  public  count: number = 1;
+  public  viewCount: Promise<number>;
   private pageSize: number = 20;
   private pageNumber: number = 1;
   private canLoadMore:boolean = true;
@@ -40,7 +44,6 @@ export class MainPage {
     this.searchQuery = '';
     this.menuCtrl.enable(true);
     this.getVideos();
-   
 
     this.backandService.on("items_updated")
             .subscribe(
@@ -60,9 +63,9 @@ export class MainPage {
    }
 
 
-    ionViewDidLoad() {
+  ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
-
+    
     this.events.subscribe('MainPage:reload', () => {
       //this.getVideos();
      let loader = this.loadingCtrl.create({
@@ -84,8 +87,8 @@ export class MainPage {
 
   }
 
-   public getVideos() {
-   this.backandService.getList('videos',null,null,null,null,this.deep=true,null ).subscribe(
+  public getVideos() {
+   this.backandService.getList('videos',null,null,null,null,this.deep ).subscribe(
       data => {
         console.log(data);
         this.items = data;
@@ -95,34 +98,70 @@ export class MainPage {
     );
    }
 
+public requestCount(id){
+  this.viewCount = new Promise<number>((resolve,reject) => {
+    this.backandService.getViews(id).subscribe(
+      (data:any) =>{
+        let view = data["0"].views;
+        console.log(view);
+        resolve(view);
+    });
+   });
+}
+
+
+/*public async updateViews(id): Promise<void>{
+  let view = await this.viewCount;
+  this.backandService.update('videos',id,{ 
+    "viewcount":JSON.stringify(view)}).subscribe(data =>{
+       console.log (data);
+     });
+    };
+*/
+
+
+public updateViews(id): Promise<any>{
+  return this.viewCount.then(view => ( 
+    this.backandService.update('videos',id,{ 
+      "viewcount":JSON.stringify(view)}).subscribe(data =>{
+         console.log (data);
+       })));
+    };
+
 
   public postViews(id) {
-        this.backandService.create('views',{ views: id }).subscribe(
+        this.backandService.create('views',{ video_id: id }).subscribe(
                 data => {
-                   /*  add to beginning of array
+                   /*/*  add to beginning of array
                     this.items.unshift({ id: null, name: this.name, description: this.description });
-                    console.log(this.items);*/
+                    console.log(this.items);
                     this.views = id;
                     console.log(this.views);
-                    //this.description = '';
+                    //this.description = '';*/
                 },
                 err => this.backandService.logError(err),
                 () => console.log('OK')
             );
     }
 
-    public postLike(id, heart) {
-        this.backandService.update('videos',id,{ hearts: 2  }).subscribe(
+
+    public postLike(id) {
+       this.backandService.create('hearts',{ video_id: id  }).subscribe(
                 data => {
-                 
+                  this.heart = id;
+                  console.log(this.heart);
                 },
                 err => this.backandService.logError(err),
                 () => console.log('OK')
             );
-    }
-
-
-
+               let toast = this.toastCtrl.create({
+                  message: `you just hearted a video`,
+                  duration: 3000,
+                  position: 'top',
+                  cssClass: 'toast'
+                });
+             toast.present();
+         }
 
 
    doRefresh(refresher) {
@@ -184,19 +223,18 @@ export class MainPage {
   }
 
    
-  public playvideo(id,key,title,band,category_id,heart){
+  public playvideo(id,key,title,band,category_id,heart,viewCounter){
     this.postViews(id);
+    this.requestCount(id);
+    this.updateViews(id);
     this.navCtrl.push(VideodetailsPage,{
         videokey: key,
         title: title,
         band: band,
         category:category_id,
-        heart:heart
-    }).then(()=>{
-      
-       console.log(id);
-    });
-
+        heart:heart,
+        viewCounter:viewCounter
+    })
   }
 
 

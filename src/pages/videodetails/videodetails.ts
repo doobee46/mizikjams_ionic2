@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,Events } from 'ionic-angular';
 //import { Pipe, PipeTransform } from '@angular/core';
 import { MenuController } from 'ionic-angular';
 import { Platform,ActionSheetController } from 'ionic-angular';
@@ -8,7 +8,7 @@ import { DomSanitizer} from '@angular/platform-browser';
 import { MainPage } from '../main/main';
 import { BackandService } from '../../providers/backandService';
 import { MediaPlayerService } from '../../providers/MediaPlayerService';
-
+import { ToastController } from 'ionic-angular';
 import { AdMobPro } from '../../providers/admobpro';
 
 @Component({
@@ -23,7 +23,10 @@ export class VideodetailsPage {
   public key;
   public url;
   public title;
+  public viewcount;
   public band;
+  public deep:any;
+  public popular:any;
   public category_id:string;
   public heart:any;
   public params:any;
@@ -34,7 +37,7 @@ export class VideodetailsPage {
   constructor(public navCtrl: NavController,private sanitizer: DomSanitizer,
    public navParams: NavParams,public loadingCtrl: LoadingController,public actionsheetCtrl: ActionSheetController,
    public menuCtrl: MenuController,public backandService:BackandService,public platform: Platform,
-   private adMobPro: AdMobPro, public mplayer: MediaPlayerService) {
+   private adMobPro: AdMobPro, public mplayer: MediaPlayerService,public toastCtrl: ToastController,public events: Events) {
 
    this.menuCtrl.enable(true);
    this.key   = navParams.get('videokey');
@@ -42,6 +45,7 @@ export class VideodetailsPage {
    this.band  = navParams.get('band');
    this.category_id = navParams.get('category')
    this.heart = navParams.get('heart')
+   this.viewcount=navParams.get('viewcount')
    /*console.log(this.key)
    console.log(this.title)
    console.log(this.band)
@@ -86,9 +90,12 @@ export class VideodetailsPage {
  
    goBack(){
      this.navCtrl.pop(MainPage);
+    
    }
 
-    openMenu() {
+  
+
+    openMenu(id,key,title,band,category_id) {
     let actionSheet = this.actionsheetCtrl.create({
       title: 'Videos',
       cssClass: 'action-sheets-basic-page',
@@ -111,15 +118,17 @@ export class VideodetailsPage {
         {
           text: 'Play',
           icon: !this.platform.is('ios') ? 'arrow-dropright-circle' : null,
-          handler: () => {
+          handler: data => {
+            this.playvideo(id,key,title,band,category_id);
             console.log('Play clicked');
           }
         },
         {
           text: 'Favorite',
           icon: !this.platform.is('ios') ? 'heart-outline' : null,
-          handler: () => {
-            console.log('Favorite clicked');
+          handler: data => {
+            this.postLike(id);
+            console.log(id +'was added to favorite')
           }
         },
         {
@@ -151,7 +160,53 @@ export class VideodetailsPage {
     this.adMobPro.showInterstitial();
   }
 
+ 
+public postLike(id) {
+  this.backandService.create('hearts',{video_id: id  }).subscribe(
+          data => {
+            this.heart = id;
+            console.log(this.heart);
+          },
+          err => this.backandService.logError(err),
+          () => console.log('OK')
+      );
+          let toast = this.toastCtrl.create({
+            message: `you just hearted a video`,
+            duration: 3000,
+            position: 'top',
+            cssClass: 'toast'
+          });
+        toast.present();
+    }
 
+public playvideo(id,key,title,band,category_id){
+    this.postViews(id);
+    this.navCtrl.push(VideodetailsPage,{
+        videokey: key,
+        title: title,
+        band: band,
+        category:category_id,
+    }).then(()=>{
+      
+       console.log(id);
+    });
+
+  }
+
+ public postViews(id) {
+        this.backandService.create('views',{ video_id: id }).subscribe(
+                data => {
+                  //  /*  add to beginning of array
+                  //   this.items.unshift({ id: null, name: this.name, description: this.description });
+                  //   console.log(this.items);*/
+                  //   this.views = id;
+                  //   console.log(this.views);
+                  //   //this.description = '';
+                },
+                err => this.backandService.logError(err),
+                () => console.log('OK')
+            );
+    }
 
 
 }

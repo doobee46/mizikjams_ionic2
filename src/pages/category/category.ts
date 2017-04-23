@@ -45,13 +45,30 @@ export class CategoryPage {
       });
     }
 
-  public playvideo(id,key,title,band,category_id){
+    public postViews(id) {
+      this.backandService.create('views',{ views: id }).subscribe(
+              data => {
+                 /*   add to beginning of array
+                  this.items.unshift({ id: null, name: this.name, description: this.description });
+                  console.log(this.items);
+                  this.views = id;
+                  console.log(this.views);
+                  //this.description = '';*/
+              },
+              err => this.backandService.logError(err),
+              () => console.log('OK')
+          );
+  }
+
+  public playvideo(id,key,title,band,category_id,viewcount){
+    this.postViews(id);
     this.navCtrl.push(VideodetailsPage,{
         id :id,
         videokey: key,
         title: title,
         band: band,
-        category:category_id
+        category:category_id,
+        viewcount:viewcount
     });
     
     console.log(category_id);
