@@ -1,6 +1,5 @@
 {
   "name": "mizikjams",
   "app_id": "4d86ccd8",
-  "v2": true,
-  "typescript": true
+  "type": "ionic-angular"
 }
